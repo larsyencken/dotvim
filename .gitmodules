@@ -7,3 +7,6 @@
 [submodule "bundle/drake"]
 	path = bundle/drake
 	url = https://bitbucket.org/larsyencken/vim-drake-syntax
+[submodule "bundle/nerdcommenter"]
+	path = bundle/nerdcommenter
+	url = git://github.com/scrooloose/nerdcommenter
