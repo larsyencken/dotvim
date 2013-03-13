@@ -1,0 +1,3 @@
+[submodule "bundle/julia-vim"]
+	path = bundle/julia-vim
+	url = git://github.com/JuliaLang/julia-vim
