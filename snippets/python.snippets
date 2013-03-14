@@ -172,9 +172,11 @@ snippet ifmain
 snippet _
 	__${1:init}__${2}
 snippet trace
-	import pdb; pdb.set_trace()
+	import pdb
+	pdb.set_trace()
 snippet itrace
-	import ipdb; ipdb.set_trace()
+	import ipdb
+	ipdb.set_trace()
 snippet setup
 	from setuptools import setup
 
