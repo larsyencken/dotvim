@@ -37,3 +37,6 @@
 [submodule "bundle/vim-python-pep8-indent"]
 	path = bundle/vim-python-pep8-indent
 	url = git://github.com/hynek/vim-python-pep8-indent
+[submodule "bundle/prolog"]
+	path = bundle/prolog
+	url = git://github.com/adimit/prolog.vim
