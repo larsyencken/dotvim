@@ -46,3 +46,6 @@
 [submodule "bundle/webapi-vim"]
 	path = bundle/webapi-vim
 	url = https://github.com/mattn/webapi-vim
+[submodule "bundle/twig"]
+	path = bundle/twig
+	url = https://github.com/lunaru/vim-twig
