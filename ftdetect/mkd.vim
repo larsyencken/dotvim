@@ -9,7 +9,8 @@ if has("gui_macvim")
         set background=dark
         "set gfn=Inconsolata:h19                " font to use
         "set gfn=Inconsolata:h17                " font to use
-        set gfn=Source\ Code\ Pro:h15
+        set guifont=Ubuntu\ Mono:h22
+        set guioptions-=T
         set lines=50 columns=80           " size of the editable area
         set fuoptions=background:#00f5f6f6 " macvim specific setting for editor's background color
         set guioptions-=r                  " remove right scrollbar
