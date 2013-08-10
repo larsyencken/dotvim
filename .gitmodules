@@ -55,3 +55,9 @@
 [submodule "bundle/scala"]
 	path = bundle/scala
 	url = https://github.com/derekwyatt/vim-scala
+[submodule "bundle/fireplace"]
+	path = bundle/fireplace
+	url = git://github.com/tpope/vim-fireplace.git
+[submodule "bundle/rainbow_parentheses"]
+	path = bundle/rainbow_parentheses
+	url = git://github.com/kien/rainbow_parentheses.vim.git
