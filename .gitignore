@@ -1,2 +1,5 @@
 backup
 .netrwhist
+.DS_Store
+*.pyc
+*.pyo
