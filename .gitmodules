@@ -64,3 +64,9 @@
 [submodule "bundle/snipmate"]
 	path = bundle/snipmate
 	url = https://github.com/garbas/vim-snipmate
+[submodule "bundle/addon-mw-utils"]
+	path = bundle/addon-mw-utils
+	url = https://github.com/MarcWeber/vim-addon-mw-utils
+[submodule "bundle/tlib"]
+	path = bundle/tlib
+	url = https://github.com/vim-scripts/tlib
