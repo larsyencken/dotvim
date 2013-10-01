@@ -82,8 +82,8 @@ snippet headt
 
 	def suite():
 		return unittest.TestSuite((
-				unittest.makeSuite(${3}),
-			))
+			unittest.makeSuite(${3}),
+		))
 
 
 	if __name__ == '__main__':
@@ -183,16 +183,16 @@ snippet setup
 	VERSION = '0.1.0'
 
 	setup(
-			name='${1}',
-			description="${2}",
-			url="${3}",
-			version=VERSION,
-			author="Lars Yencken",
-			author_email="lars@yencken.org",
-			license="ISC",
-			scripts=[],
-			packages=[],
-			install_requires=[],
-		)
+		name='${1}',
+		description="${2}",
+		url="${3}",
+		version=VERSION,
+		author="Lars Yencken",
+		author_email="lars@yencken.org",
+		license="ISC",
+		scripts=[],
+		packages=[],
+		install_requires=[],
+	)
 snippet future
 	from __future__ import absolute_import, print_function, division
