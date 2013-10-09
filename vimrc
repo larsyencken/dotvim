@@ -36,10 +36,12 @@ set backspace=indent,eol,start
 set term=xterm-color
 
 "" COOL STUFF FOR VIM 7.3 OR ABOVE
-"set relativenumber
-"set undofile
-set colorcolumn=79
-hi ColorColumn ctermbg=lightgrey
+if version >= 730
+  "set relativenumber
+  "set undofile
+  set colorcolumn=79
+  hi ColorColumn ctermbg=lightgrey
+endif
 
 " Make commands easier on the fingers
 nnoremap ; :
