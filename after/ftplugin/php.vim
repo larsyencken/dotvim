@@ -3,5 +3,4 @@
 "
 
 " Settings as used by 99designs
-set ts=2 sw=2 noet tw=78
-
+set ts=4 sts=4 sw=4 et tw=78
