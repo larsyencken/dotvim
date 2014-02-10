@@ -164,3 +164,6 @@ au Syntax * RainbowParenthesesLoadSquare
 au Syntax * RainbowParenthesesLoadBraces
 
 let g:markdown_fenced_languages = ['python', 'sql', 'julia']
+
+inoremap ttt ✓
+inoremap xxx ✗
