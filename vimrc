@@ -167,3 +167,6 @@ let g:markdown_fenced_languages = ['python', 'sql', 'julia']
 
 inoremap ttt ✓
 inoremap xxx ✗
+
+" strip trailing whitespace
+autocmd BufWritePre * :%s/\s\+$//e
