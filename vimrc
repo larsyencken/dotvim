@@ -15,7 +15,7 @@ cnoremap <leader>4 :set<space>ts=4<space>sts=4<space>sw=4<space>et<return>
 cnoremap <leader>2 :set<space>ts=2<space>sts=2<space>sw=2<space>et<return>
 
 " disable modelines for security
-"set modelines=0
+set modelines=0
 
 " sensible editing defaults
 syntax on
@@ -134,6 +134,8 @@ set laststatus=2
 
 " syntastic
 set foldlevelstart=99
+let g:syntastic_auto_loc_list=1
+let g:syntastic_auto_jump=1
 
 let g:ctrlp_map = '<leader>t'
 
@@ -170,3 +172,13 @@ inoremap xxx ✗
 
 " strip trailing whitespace
 autocmd BufWritePre * :%s/\s\+$//e
+
+" neocomplete
+let g:acp_enableAtStartup = 0
+" Use neocomplete.
+let g:neocomplete#enable_at_startup = 1
+" Use smartcase.
+let g:neocomplete#enable_smart_case = 1
+" Set minimum syntax keyword length.
+let g:neocomplete#sources#syntax#min_keyword_length = 3
+let g:neocomplete#lock_buffer_name_pattern = '\*ku\*'

@@ -79,3 +79,6 @@
 [submodule "bundle/go"]
 	path = bundle/go
 	url = https://github.com/fatih/vim-go
+[submodule "bundle/neocomplete.vim"]
+	path = bundle/neocomplete.vim
+	url = https://github.com/Shougo/neocomplete.vim
