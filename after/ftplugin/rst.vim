@@ -7,6 +7,5 @@ set linebreak                      " break the lines on words
 set tw=0
 set colorcolumn=0
 
-nnoremap <leader>m :!scons -u<return>
 nnoremap <leader>v :!skim_refresh_all.sh<return>
 
