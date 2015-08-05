@@ -21,46 +21,22 @@ snippet headex
 	#  `system("get_project $1.py")`
 	#
 
-	"""
-	${1}
-	"""
-
 	import os
 	import sys
-	import optparse
+
+	import click
 
 
-	def ${6:$4}($7):
+	@click.command()
+	def main():
 		"""
-		${8}
+		${1}
 		"""
-		${9:pass}
-
-
-	def _create_option_parser():
-		usage = \
-	"""%prog [options] ${2:arguments}
-
-	${3:Insert usage message.}"""  # nopep8
-
-		parser = optparse.OptionParser(usage)
-
-		return parser
-
-
-	def main(argv):
-		parser = _create_option_parser()
-		(options, args) = parser.parse_args(argv)
-
-		if ${5:args}:
-			parser.print_help()
-			sys.exit(1)
-
-		${4:my_function}(*args)
+		${2:pass}
 
 
 	if __name__ == '__main__':
-		main(sys.argv[1:])
+		main()
 snippet headt
 	#!/usr/bin/env python
 	# -*- coding: utf-8 -*-
