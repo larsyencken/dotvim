@@ -85,3 +85,6 @@
 [submodule "bundle/less"]
 	path = bundle/less
 	url = https://github.com/groenewege/vim-less
+[submodule "bundle/vim-open-url"]
+	path = bundle/vim-open-url
+	url = https://github.com/henrik/vim-open-url
