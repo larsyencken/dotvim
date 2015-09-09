@@ -72,3 +72,14 @@ snippet get
 # Get Element
 snippet gett
 	getElementBy${1:Id}('${2}')${3}
+snippet feed
+	{
+		"language": "${1}",
+		"rss_url": "${2}",
+		"source_name": "${3}"
+	}
+snippet prop
+	"${1}": {
+	  "description": "${2}",
+	  "type": "${3:string}"
+	},
