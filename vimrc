@@ -138,6 +138,7 @@ let g:syntastic_auto_loc_list=1
 let g:syntastic_auto_jump=1
 
 let g:ctrlp_map = '<leader>t'
+nnoremap <leader>r :CtrlPBuffer<cr>
 
 " enable clipboard integration
 set clipboard=unnamed
