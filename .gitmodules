@@ -88,3 +88,6 @@
 [submodule "bundle/vim-open-url"]
 	path = bundle/vim-open-url
 	url = https://github.com/henrik/vim-open-url
+[submodule "bundle/ack.vim"]
+    path = bundle/ack.vim
+    url = https://github.com/mileszs/ack.vim
