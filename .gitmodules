@@ -21,7 +21,7 @@
 	url = git://github.com/Lokaltog/powerline
 [submodule "bundle/ctrlp"]
 	path = bundle/ctrlp
-	url = git://github.com/kien/ctrlp.vim
+	url = git://github.com/ctrlpvim/ctrlp.vim
 [submodule "bundle/clojure-static"]
 	path = bundle/clojure-static
 	url = git://github.com/guns/vim-clojure-static.git
