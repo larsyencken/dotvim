@@ -11,8 +11,8 @@ filetype plugin indent on
 " sensible tab defaults
 set ts=4 sts=4 sw=4 et
 
-cnoremap <leader>4 :set<space>ts=4<space>sts=4<space>sw=4<space>et<return>
-cnoremap <leader>2 :set<space>ts=2<space>sts=2<space>sw=2<space>et<return>
+"nnoremap <leader>4 :setlocal<space>ts=4<space>sts=4<space>sw=4<space>et<return>
+"nnoremap <leader>2 :setlocal<space>ts=2<space>sts=2<space>sw=2<space>et<return>
 
 " disable modelines for security
 set modelines=0
@@ -62,6 +62,7 @@ vnoremap / /\v
 nnoremap <leader><space> :noh<cr>
 nnoremap <tab> %
 vnoremap <tab> %
+nnoremap <leader>m :!make<cr>
 
 " handle long lines correctly
 set wrap
@@ -77,14 +78,6 @@ nnoremap k gk
 
 " text wrapping
 nnoremap <leader>q gqap
-" select just-pasted text
-nnoremap <leader>v V`]
-" pop out of insert mode with jj
-inoremap jj <ESC>
-" quickfix
-nnoremap <leader>m :make<cr>
-nnoremap <leader>d :!drake<cr>
-nnoremap <leader>c :cc<cr>
 
 " SPLIT WINDOWS
 nnoremap <leader>w <C-w>v<C-w>l
@@ -94,11 +87,9 @@ nnoremap <C-k> <C-w>k
 nnoremap <C-l> <C-w>l
 
 nnoremap <leader>b :bd<cr>
-nnoremap <leader>s :set filetype=sh<cr>
-nnoremap <leader>p :set filetype=python<cr>
 
 " taglist -- navigate between items
-nnoremap <leader>r :TlistToggle<cr><C-w>h/function<cr><down>:noh<cr>
+"nnoremap <leader>f :TlistToggle<cr><C-w>h/function<cr><down>:noh<cr>
 
 " WHAT TO IGNORE
 set wildignore+=*.o,*.6,.git,.hg,.svn,*.a,*.so,*.out,*.bbl,*.swp,*.toc,_obj,_test,*-env,*.pyc,*.pyo,*.png,*.jpg,blueprint,*.os,*.gif,*.tar,*.tar.gz,*.tar.bz2,build,dist,*.egg-info,bin,*.class,*.jar,env
@@ -126,10 +117,6 @@ set directory=~/.vim/backup
 " empty statusline is equivalent to:
 " set statusline=%<%f\ %h%m%r%=%-14.(%l,%c%V%)\ %P
 set statusline=%<%f\ %{fugitive#statusline()}\ %h%m%r%=%-14.(%l,%c%V%)\ %P
-
-" Using a patched font for powerline
-"let g:Powerline_symbols = 'fancy'
-"let g:Powerline_theme = 'solarized'
 set laststatus=2
 
 " syntastic
@@ -138,7 +125,7 @@ let g:syntastic_auto_loc_list=1
 let g:syntastic_auto_jump=1
 
 let g:ctrlp_map = '<leader>t'
-nnoremap <leader>r :CtrlPBuffer<cr>
+nnoremap <leader>f :CtrlPBuffer<cr>
 
 " enable clipboard integration
 set clipboard=unnamed
@@ -180,3 +167,5 @@ let g:neocomplete#enable_smart_case = 1
 " Set minimum syntax keyword length.
 let g:neocomplete#sources#syntax#min_keyword_length = 3
 let g:neocomplete#lock_buffer_name_pattern = '\*ku\*'
+
+let g:jedi#rename_command = "<leader>r"
