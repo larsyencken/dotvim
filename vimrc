@@ -169,3 +169,9 @@ let g:neocomplete#sources#syntax#min_keyword_length = 3
 let g:neocomplete#lock_buffer_name_pattern = '\*ku\*'
 
 let g:jedi#rename_command = "<leader>r"
+
+" fix the quickfix window size, which can be too small sometimes
+au FileType qf call AdjustWindowHeight(5, 13)
+function! AdjustWindowHeight(minheight, maxheight)
+  exe max([min([line("$"), a:maxheight]), a:minheight]) . "wincmd _"
+endfunction
