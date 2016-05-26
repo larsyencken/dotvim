@@ -17,4 +17,7 @@ set ts=4 sts=4 sw=4 et
 
 " wrap with indent at word boundaries
 set bri
+set briopt=shift:4
 set linebreak
+
+syn keyword larsTodo LARS
