@@ -21,10 +21,18 @@ Plug 'tpope/vim-fugitive'
 Plug 'vim-airline/vim-airline'
 Plug 'vim-airline/vim-airline-themes'
 
+" snippets
+Plug 'vim-scripts/tlib'
+Plug 'MarcWeber/vim-addon-mw-utils'
+Plug 'garbas/vim-snipmate'
+
 call plug#end()
 
 
 " EDITOR SETTINGS
+
+" Use tabstop of 4 by default
+set ts=4 sts=4 sw=4 et
 
 " Use comma for custom commands
 let mapleader = ","
@@ -32,8 +40,13 @@ let mapleader = ","
 " Close window on ,b
 nnoremap <leader>b :bd<cr>
 
+" Stop highlighting a search on ,_
+nnoremap <leader><space> :noh<cr>
+
 set nojoinspaces        " Prevent adding an extra space on join-after-punctuation
 set showmatch           " Show matching brackets
+set linebreak           " Wrap lines at word boundaries
+set cursorline          " Underline the line the cursor is on
 
 " Split windows more easily
 nnoremap <leader>w <C-w>v<C-w>l
@@ -48,7 +61,7 @@ nnoremap <C-l> <C-w>l
 " Configure ctrl-p plugin for finding files
 let g:ctrlp_map = '<leader>t'
 nnoremap <leader>f :CtrlPBuffer<cr>
-set wildignore+=*.o,*.6,.git,.hg,.svn,*.a,*.so,*.out,*.bbl,*.swp,*.toc,_obj,_test,*-env,*.pyc,*.pyo,*.png,*.jpg,blueprint,*.os,*.gif,*.tar,*.tar.gz,*.tar.bz2,build,dist,*.egg-info,bin,*.class,*.jar,env
+set wildignore+=*.o,*.6,.git,.hg,.svn,*.a,*.so,*.out,*.bbl,*.swp,*.toc,_obj,_test,*-env,*.pyc,*.pyo,*.png,*.jpg,blueprint,*.os,*.gif,*.tar,*.tar.gz,*.tar.bz2,build,dist,*.egg-info,bin,*.class,*.jar,env,__pycache__
 
 " Syntastic
 let g:syntastic_auto_loc_list=1
