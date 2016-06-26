@@ -14,6 +14,13 @@ Plug 'scrooloose/syntastic'
 " navigation between files
 Plug 'ctrlpvim/ctrlp.vim'
 
+" better git support
+Plug 'tpope/vim-fugitive'
+
+" better status line
+Plug 'vim-airline/vim-airline'
+Plug 'vim-airline/vim-airline-themes'
+
 call plug#end()
 
 
@@ -40,6 +47,9 @@ set wildignore+=*.o,*.6,.git,.hg,.svn,*.a,*.so,*.out,*.bbl,*.swp,*.toc,_obj,_tes
 " Syntastic
 let g:syntastic_auto_loc_list=1
 let g:syntastic_auto_jump=1
+
+" Airline
+let g:airline_theme= 'serene'
 
 
 " OVERRIDE WITH LOCAL SETTINGS
