@@ -58,6 +58,9 @@ nnoremap <C-j> <C-w>j
 nnoremap <C-k> <C-w>k
 nnoremap <C-l> <C-w>l
 
+" Strip trailing whitespace on save
+autocmd BufWritePre * :%s/\s\+$//e
+
 
 " CUSTOMIZE PLUGINS
 
