@@ -61,6 +61,9 @@ nnoremap <C-l> <C-w>l
 " Strip trailing whitespace on save
 autocmd BufWritePre * :%s/\s\+$//e
 
+" Use system clipboard on OS X
+set clipboard=unnamed
+
 
 " CUSTOMIZE PLUGINS
 
