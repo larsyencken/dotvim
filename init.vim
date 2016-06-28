@@ -26,6 +26,9 @@ Plug 'vim-scripts/tlib'
 Plug 'MarcWeber/vim-addon-mw-utils'
 Plug 'garbas/vim-snipmate'
 
+" better indending for Python
+Plug 'hynek/vim-python-pep8-indent'
+
 call plug#end()
 
 
