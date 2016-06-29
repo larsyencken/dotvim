@@ -29,6 +29,9 @@ Plug 'garbas/vim-snipmate'
 " better indending for Python
 Plug 'hynek/vim-python-pep8-indent'
 
+" quick commenting and uncommenting
+Plug 'scrooloose/nerdcommenter'
+
 call plug#end()
 
 
