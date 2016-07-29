@@ -76,6 +76,10 @@ autocmd BufWritePre * :%s/\s\+$//e
 " Use system clipboard on OS X
 set clipboard=unnamed
 
+" Navigate up and down by visual lines, not by newlines
+nnoremap j gj
+nnoremap k gk
+
 
 " CUSTOMIZE PLUGINS
 
