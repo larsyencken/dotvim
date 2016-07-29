@@ -32,6 +32,15 @@ Plug 'hynek/vim-python-pep8-indent'
 " quick commenting and uncommenting
 Plug 'scrooloose/nerdcommenter'
 
+" jump to definitions, do refactoring
+Plug 'davidhalter/jedi-vim'
+
+" add ack support
+Plug 'mileszs/ack.vim'
+
+" work with matching pairs of brackets or quotes
+Plug 'tpope/vim-surround'
+
 call plug#end()
 
 
@@ -81,6 +90,9 @@ let g:syntastic_auto_jump=1
 
 " Airline
 let g:airline_theme= 'serene'
+
+" Jedi
+let g:jedi#smart_auto_mappings = 0  " turn off completion of from ... import
 
 
 " OVERRIDE WITH LOCAL SETTINGS
