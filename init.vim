@@ -73,8 +73,16 @@ nnoremap <C-l> <C-w>l
 " Strip trailing whitespace on save
 autocmd BufWritePre * :%s/\s\+$//e
 
-" Use system clipboard on OS X
-set clipboard=unnamed
+if has("unix")
+  let s:uname = system("uname -s")
+else
+  let s:uname = "unknown"
+endif
+
+if s:uname == "Darwin"
+  " Use system clipboard on OS X
+  set clipboard=unnamed
+endif
 
 " Navigate up and down by visual lines, not by newlines
 nnoremap j gj
