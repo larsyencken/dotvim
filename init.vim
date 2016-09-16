@@ -73,13 +73,9 @@ nnoremap <C-l> <C-w>l
 " Strip trailing whitespace on save
 autocmd BufWritePre * :%s/\s\+$//e
 
-if has("unix")
-  let s:uname = system("uname -s")
-else
-  let s:uname = "unknown"
-endif
+let uname = system("uname -s")
 
-if s:uname == "Darwin"
+if uname == "Darwin\n"
   " Use system clipboard on OS X
   set clipboard=unnamed
 endif
