@@ -1,10 +1,13 @@
 # dotvim
 
-My personal vim setup.
+My personal neovim setup.
 
 ```console
-$ git clone --recursive https://github.com/larsyencken/dotvim .vim
+cd ~/.config
+git clone -b nvim https://github.com/larsyencken/dotvim nvim
 ```
+
+Then open neovim and run `:PlugInstall` to install plugins.
 
 ## Linting requirements
 
