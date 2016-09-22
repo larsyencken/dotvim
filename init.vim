@@ -85,12 +85,28 @@ endif
 nnoremap j gj
 nnoremap k gk
 
+" Use <leader>u to open URLs
+function! HandleURL()
+  let s:uri = matchstr(getline("."), '[a-z]*:\/\/[^ >,;]*')
+  echo s:uri
+  if s:uri != ""
+    silent exec "!open '".s:uri."'"
+  else
+    echo "No URI found in line."
+  endif
+endfunction
+map <leader>u :call HandleURL()<cr>
+
 
 " CUSTOMIZE PLUGINS
 
 " Configure ctrl-p plugin for finding files
+
+" ,t to open any file
 let g:ctrlp_map = '<leader>t'
+" ,f to switch to a file that's already open
 nnoremap <leader>f :CtrlPBuffer<cr>
+" never include these filetypes in the list
 set wildignore+=*.o,*.6,.git,.hg,.svn,*.a,*.so,*.out,*.bbl,*.swp,*.toc,_obj,_test,*-env,*.pyc,*.pyo,*.png,*.jpg,blueprint,*.os,*.gif,*.tar,*.tar.gz,*.tar.bz2,build,dist,*.egg-info,bin,*.class,*.jar,env,__pycache__
 
 " Syntastic
