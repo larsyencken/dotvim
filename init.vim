@@ -16,6 +16,7 @@ Plug 'ctrlpvim/ctrlp.vim'
 
 " better git support
 Plug 'tpope/vim-fugitive'
+Plug 'airblade/vim-gitgutter'
 
 " better status line
 Plug 'vim-airline/vim-airline'
