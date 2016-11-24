@@ -50,6 +50,9 @@ call plug#end()
 " Use tabstop of 4 by default
 set ts=4 sts=4 sw=4 et
 
+" Keep buffers with unsaved changes around in the backgroun
+set hidden
+
 " Use comma for custom commands
 let mapleader = ","
 
