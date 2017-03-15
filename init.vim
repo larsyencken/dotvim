@@ -34,7 +34,8 @@ Plug 'hynek/vim-python-pep8-indent'
 Plug 'scrooloose/nerdcommenter'
 
 " jump to definitions, do refactoring
-Plug 'davidhalter/jedi-vim'
+" (TOO SLOW)
+"Plug 'davidhalter/jedi-vim'
 
 " add ack support
 Plug 'mileszs/ack.vim'
