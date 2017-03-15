@@ -54,6 +54,9 @@ set ts=4 sts=4 sw=4 et
 " Keep buffers with unsaved changes around in the backgroun
 set hidden
 
+" Make search replace all occurrences by default
+set gdefault
+
 " Use comma for custom commands
 let mapleader = ","
 
