@@ -174,3 +174,16 @@ snippet future
 	from __future__ import absolute_import, print_function, division
 snippet ny
 	raise Exception('not yet implemented')
+
+snippet tbl
+	def ${1}():
+		logging.info('Generating ${2}')
+
+		query = '''
+		${4}
+		'''
+
+		sh.bq('query', '--replace', '--allow_large_results',
+			  '--nouse_legacy_sql',
+			  '--destination_table=lifesum-data:${3:$2}',
+			  query)
