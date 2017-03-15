@@ -9,7 +9,7 @@
 call plug#begin()
 
 " syntax checking
-Plug 'scrooloose/syntastic'
+Plug 'w0rp/ale'
 
 " navigation between files
 Plug 'ctrlpvim/ctrlp.vim'
@@ -111,9 +111,11 @@ nnoremap <leader>f :CtrlPBuffer<cr>
 " never include these filetypes in the list
 set wildignore+=*.o,*.6,.git,.hg,.svn,*.a,*.so,*.out,*.bbl,*.swp,*.toc,_obj,_test,*-env,*.pyc,*.pyo,*.png,*.jpg,blueprint,*.os,*.gif,*.tar,*.tar.gz,*.tar.bz2,build,dist,*.egg-info,bin,*.class,*.jar,env,lib,__pycache__,tags
 
-" Syntastic
-let g:syntastic_auto_loc_list=1
-let g:syntastic_auto_jump=1
+" Ale
+let g:ale_set_quickfix = 1
+let g:ale_open_list = 1
+nmap <silent> <C-k> <Plug>(ale_previous_wrap)
+nmap <silent> <C-j> <Plug>(ale_next_wrap)
 
 " Airline
 let g:airline_theme= 'serene'
