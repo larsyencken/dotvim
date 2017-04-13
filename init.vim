@@ -43,6 +43,11 @@ Plug 'mileszs/ack.vim'
 " work with matching pairs of brackets or quotes
 Plug 'tpope/vim-surround'
 
+" handle more text objects like Python triple quote
+Plug 'paradigm/TextObjectify'
+Plug 'bps/vim-textobj-python'
+Plug 'kana/vim-textobj-user'
+
 call plug#end()
 
 
