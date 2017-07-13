@@ -48,6 +48,10 @@ Plug 'paradigm/TextObjectify'
 Plug 'bps/vim-textobj-python'
 Plug 'kana/vim-textobj-user'
 
+" distraction free writing
+Plug 'junegunn/goyo'
+Plug 'junegunn/limelight'
+
 call plug#end()
 
 
