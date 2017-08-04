@@ -52,6 +52,10 @@ Plug 'kana/vim-textobj-user'
 Plug 'junegunn/goyo'
 Plug 'junegunn/limelight'
 
+" more syntax support
+Plug 'JuliaEditorSupport/julia-vim'
+Plug 'lepture/vim-jinja'
+
 call plug#end()
 
 
