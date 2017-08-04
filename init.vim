@@ -49,8 +49,8 @@ Plug 'bps/vim-textobj-python'
 Plug 'kana/vim-textobj-user'
 
 " distraction free writing
-Plug 'junegunn/goyo'
-Plug 'junegunn/limelight'
+Plug 'junegunn/goyo.vim'
+Plug 'junegunn/limelight.vim'
 
 " more syntax support
 Plug 'JuliaEditorSupport/julia-vim'
