@@ -57,6 +57,10 @@ Plug 'JuliaEditorSupport/julia-vim'
 Plug 'lepture/vim-jinja'
 Plug 'ElmCast/elm-vim'
 
+" colorschemes
+Plug 'fxn/vim-monochrome'
+Plug 'dracula/vim'
+
 call plug#end()
 
 
@@ -112,6 +116,8 @@ function! HandleURL()
   endif
 endfunction
 map <leader>u :call HandleURL()<cr>
+
+colorscheme monochrome
 
 
 " CUSTOMIZE PLUGINS
