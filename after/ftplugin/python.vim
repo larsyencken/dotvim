@@ -17,3 +17,6 @@ hi ColorColumn ctermbg=darkgrey
 let g:goyo_width=120
 let g:goyo_margin_top=1
 let g:goyo_margin_bottom=1
+
+" use autopep8 for auto-formatting
+set equalprg=autopep8\ --agressive\ --agressive

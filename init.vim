@@ -61,6 +61,9 @@ Plug 'ElmCast/elm-vim'
 Plug 'fxn/vim-monochrome'
 Plug 'dracula/vim'
 
+" automatic Python reformatting
+Plug 'tell-k/vim-autopep8'
+
 call plug#end()
 
 
@@ -141,6 +144,9 @@ let g:airline_theme= 'serene'
 " Jedi
 let g:jedi#smart_auto_mappings = 0  " turn off completion of from ... import
 
+" autopep8
+let g:autopep8_aggressive=2
+let g:autopep8_disable_show_diff=1
 
 " OVERRIDE WITH LOCAL SETTINGS
 
