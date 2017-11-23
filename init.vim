@@ -107,7 +107,7 @@ nnoremap k gk
 
 " Use <leader>u to open URLs
 function! HandleURL()
-  let s:uri = matchstr(getline("."), '[a-z]*:\/\/[^ >,;]*')
+  let s:uri = matchstr(getline("."), '[a-z]*:\/\/[^ >,;)]*')
   echo s:uri
   if s:uri != ""
     silent exec "!open '".s:uri."'"
