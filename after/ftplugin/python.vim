@@ -2,7 +2,7 @@
 " python.vim
 "
 
-set completeopt=menu
+setlocal completeopt=menu
 
 " wrap with indent at word boundaries
 set bri
@@ -12,3 +12,8 @@ set linebreak
 set tw=99
 set colorcolumn=99
 hi ColorColumn ctermbg=darkgrey
+
+" customize Goyo
+let g:goyo_width=120
+let g:goyo_margin_top=1
+let g:goyo_margin_bottom=1
