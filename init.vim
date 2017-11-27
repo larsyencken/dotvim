@@ -117,7 +117,7 @@ function! HandleURL()
 endfunction
 map <leader>u :call HandleURL()<cr>
 
-colorscheme monochrome
+colorscheme dracula
 
 
 " CUSTOMIZE PLUGINS
