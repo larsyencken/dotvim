@@ -61,6 +61,9 @@ Plug 'ElmCast/elm-vim'
 Plug 'fxn/vim-monochrome'
 Plug 'dracula/vim'
 
+" swift support
+Plug 'bumaociyuan/vim-swift'
+
 call plug#end()
 
 
