@@ -12,16 +12,19 @@
 
 "   http://css-tricks.com/words-avoid-educational-writing/
 
-highlight TechWordsToAvoid ctermbg=red ctermfg=white
-function MatchTechWordsToAvoid()
-	match TechWordsToAvoid /\c\<\(obviously\|basically\|simply\|of\scourse\|clearly\|just\|everyone\sknows\|however\|so,\|easy\)\>/
-endfunction
+if !exists("*MatchTechWordsToAvoid")
+    function MatchTechWordsToAvoid()
+        match TechWordsToAvoid /\c\<\(obviously\|basically\|simply\|of\scourse\|clearly\|just\|everyone\sknows\|however\|so,\|easy\)\>/
+    endfunction
+endif
+
 autocmd FileType markdown call MatchTechWordsToAvoid()
 autocmd BufWinEnter *.md call MatchTechWordsToAvoid()
 autocmd InsertEnter *.md call MatchTechWordsToAvoid()
 autocmd InsertLeave *.md call MatchTechWordsToAvoid()
 autocmd BufWinLeave *.md call clearmatches()
 
+highlight TechWordsToAvoid ctermbg=red ctermfg=white
 
 "  wrap to the indent level
 set breakindent
