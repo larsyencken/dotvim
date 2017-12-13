@@ -64,6 +64,9 @@ Plug 'dracula/vim'
 " swift support
 Plug 'bumaociyuan/vim-swift'
 
+" propertly list support (incl. binary)
+Plug 'darfink/vim-plist'
+
 call plug#end()
 
 
