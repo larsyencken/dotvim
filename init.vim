@@ -102,6 +102,10 @@ nnoremap <C-l> <C-w>l
 " Strip trailing whitespace on save
 autocmd BufWritePre * :%s/\s\+$//e
 
+" Navigate quickly up and down the quickfix list
+nnoremap <C-m> :cn<cr>
+nnoremap <C-n> :cb<cr>
+
 set clipboard=unnamed
 
 " Navigate up and down by visual lines, not by newlines
