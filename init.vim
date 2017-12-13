@@ -151,6 +151,12 @@ let g:airline_theme= 'serene'
 " Jedi
 let g:jedi#smart_auto_mappings = 0  " turn off completion of from ... import
 
+" Ack
+nnoremap <leader>a :Ack <cword><cr>
+
+" Goyo
+nnoremap <leader>g :Goyo<cr>
+
 
 " OVERRIDE WITH LOCAL SETTINGS
 
