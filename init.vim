@@ -67,6 +67,9 @@ Plug 'bumaociyuan/vim-swift'
 " propertly list support (incl. binary)
 Plug 'darfink/vim-plist'
 
+" elm support
+Plug 'ElmCast/elm-vim'
+
 call plug#end()
 
 
