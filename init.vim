@@ -159,6 +159,9 @@ nnoremap <leader>a :Ack <cword><cr>
 
 " Goyo
 nnoremap <leader>g :Goyo<cr>
+let g:goyo_width=120
+let g:goyo_margin_top=1
+let g:goyo_margin_bottom=1
 
 
 " OVERRIDE WITH LOCAL SETTINGS

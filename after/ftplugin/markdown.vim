@@ -28,3 +28,8 @@ highlight TechWordsToAvoid ctermbg=red ctermfg=white
 
 "  wrap to the indent level
 set breakindent
+
+" customize Goyo
+let g:goyo_width=80
+let g:goyo_margin_top=3
+let g:goyo_margin_bottom=3
