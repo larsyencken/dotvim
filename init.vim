@@ -148,6 +148,7 @@ set wildignore+=*.o,*.6,.git,.hg,.svn,*.a,*.so,*.out,*.bbl,*.swp,*.toc,_obj,_tes
 " Syntastic
 let g:syntastic_auto_loc_list=1
 let g:syntastic_auto_jump=1
+nnoremap <leader>s :SyntasticToggleMode<cr>
 
 " Airline
 let g:airline_theme= 'serene'
