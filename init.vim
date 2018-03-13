@@ -56,6 +56,7 @@ Plug 'junegunn/limelight.vim'
 Plug 'JuliaEditorSupport/julia-vim'
 Plug 'lepture/vim-jinja'
 Plug 'ElmCast/elm-vim'
+Plug 'udalov/kotlin-vim'
 
 " colorschemes
 Plug 'fxn/vim-monochrome'
