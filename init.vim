@@ -157,6 +157,9 @@ let g:airline_theme= 'serene'
 let g:jedi#smart_auto_mappings = 0  " turn off completion of from ... import
 
 " Ack
+if executable('ag')
+  let g:ackprg = 'ag --vimgrep'
+endif
 nnoremap <leader>a :Ack <cword><cr>
 
 " Goyo
