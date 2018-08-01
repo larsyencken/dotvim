@@ -33,10 +33,6 @@ Plug 'hynek/vim-python-pep8-indent'
 " quick commenting and uncommenting
 Plug 'scrooloose/nerdcommenter'
 
-" jump to definitions, do refactoring
-" (TOO SLOW)
-"Plug 'davidhalter/jedi-vim'
-
 " add ack support
 Plug 'mileszs/ack.vim'
 
@@ -56,20 +52,13 @@ Plug 'junegunn/limelight.vim'
 Plug 'JuliaEditorSupport/julia-vim'
 Plug 'lepture/vim-jinja'
 Plug 'ElmCast/elm-vim'
+Plug 'bumaociyuan/vim-swift'
+Plug 'darfink/vim-plist'
 Plug 'udalov/kotlin-vim'
 
 " colorschemes
 Plug 'fxn/vim-monochrome'
 Plug 'dracula/vim'
-
-" swift support
-Plug 'bumaociyuan/vim-swift'
-
-" propertly list support (incl. binary)
-Plug 'darfink/vim-plist'
-
-" elm support
-Plug 'ElmCast/elm-vim'
 
 call plug#end()
 
