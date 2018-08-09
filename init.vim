@@ -60,6 +60,9 @@ Plug 'udalov/kotlin-vim'
 Plug 'fxn/vim-monochrome'
 Plug 'dracula/vim'
 
+" vimwiki
+Plug 'larsyencken/vimwiki'
+
 call plug#end()
 
 
@@ -160,6 +163,9 @@ let g:goyo_margin_bottom=1
 " Limelight
 let g:limelight_conceal_ctermfg='darkgrey'
 nnoremap <leader>l :Limelight<cr>
+
+" Vimwiki
+let g:vimwiki_list = [{'path': '~/Documents/lifesum/notes/', 'syntax': 'markdown', 'ext': '.md', 'index': 'Home'}]
 
 " OVERRIDE WITH LOCAL SETTINGS
 
