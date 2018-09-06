@@ -63,6 +63,14 @@ Plug 'dracula/vim'
 " vimwiki
 Plug 'larsyencken/vimwiki'
 
+" language server
+Plug 'autozimu/LanguageClient-neovim', {
+    \ 'branch': 'next',
+    \ 'do': 'bash install.sh',
+    \ }
+Plug 'junegunn/fzf'
+Plug 'Shougo/deoplete.nvim', { 'do': ':UpdateRemotePlugins' }
+
 call plug#end()
 
 
@@ -124,6 +132,7 @@ endfunction
 map <leader>u :call HandleURL()<cr>
 
 colorscheme dracula
+set background=dark
 
 
 " CUSTOMIZE PLUGINS
@@ -165,7 +174,7 @@ let g:limelight_conceal_ctermfg='darkgrey'
 nnoremap <leader>l :Limelight<cr>
 
 " Vimwiki
-let g:vimwiki_list = [{'path': '~/Documents/lifesum/notes/', 'syntax': 'markdown', 'ext': '.md', 'index': 'Home'}]
+let g:vimwiki_list = [{'path': '~/Documents/lars/notes/', 'syntax': 'markdown', 'ext': '.md', 'index': 'Home'}]
 
 " OVERRIDE WITH LOCAL SETTINGS
 
@@ -174,6 +183,24 @@ let localrc =  expand("~/.config/nvim/init-local.vim")
 if filereadable(localrc)
     exe "source " . localrc
 endif
+
+" Deoplete
+let g:deoplete#enable_at_startup = 1
+let g:python_host_prog = '/Users/lars/.pyenv/versions/neovim2/bin/python'
+let g:python3_host_prog = '/Users/lars/.pyenv/versions/neovim3/bin/python'
+
+" Language servers
+set hidden
+
+let g:LanguageClient_serverCommands = {
+    \ 'python': ['/Users/lars/.pyenv/versions/neovim3/bin/pyls'],
+    \ }
+
+nnoremap <F5> :call LanguageClient_contextMenu()<CR>
+" Or map each action separately
+nnoremap <silent> K :call LanguageClient#textDocument_hover()<CR>
+nnoremap <silent> gd :call LanguageClient#textDocument_definition()<CR>
+nnoremap <silent> <F2> :call LanguageClient#textDocument_rename()<CR>
 
 
 "
