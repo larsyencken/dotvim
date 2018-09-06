@@ -181,8 +181,7 @@ let g:goyo_margin_bottom=1
 let g:limelight_conceal_ctermfg='darkgrey'
 nnoremap <leader>l :Limelight!!<cr>
 
-" Vimwiki
-"let g:vimwiki_list = [{'path': '~/Documents/lifesum/notes/', 'syntax': 'markdown', 'ext': '.md', 'index': 'Home'}]
+let g:vimwiki_list = [{'path': '~/Documents/lifesum/notes/', 'syntax': 'markdown', 'ext': '.md', 'index': 'Home'}]
 
 " OVERRIDE WITH LOCAL SETTINGS
 
@@ -194,14 +193,14 @@ endif
 
 " Deoplete
 let g:deoplete#enable_at_startup = 1
-let g:python_host_prog = '/Users/lars/.pyenv/versions/neovim2/bin/python'
-let g:python3_host_prog = '/Users/lars/.pyenv/versions/neovim3/bin/python'
+let g:python_host_prog = '/Users/lifesum/.pyenv/versions/neovim2/bin/python'
+let g:python3_host_prog = '/Users/lifesum/.pyenv/versions/neovim3/bin/python'
 
 " Language servers
 set hidden
 
 let g:LanguageClient_serverCommands = {
-    \ 'python': ['/Users/lars/.pyenv/versions/neovim3/bin/pyls'],
+    \ 'python': ['/Users/lifesum/.pyenv/versions/neovim3/bin/pyls'],
     \ }
 
 nnoremap <F5> :call LanguageClient_contextMenu()<CR>
