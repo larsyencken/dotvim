@@ -68,6 +68,9 @@ Plug 'autozimu/LanguageClient-neovim', {
 Plug 'junegunn/fzf'
 Plug 'Shougo/deoplete.nvim', { 'do': ':UpdateRemotePlugins' }
 
+" uppercase SQL
+Plug 'alcesleo/vim-uppercase-sql'
+
 call plug#end()
 
 
