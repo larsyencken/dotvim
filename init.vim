@@ -123,7 +123,7 @@ function! HandleURL()
 endfunction
 map <leader>u :call HandleURL()<cr>
 
-colorscheme dracula
+"colorscheme dracula
 
 
 " CUSTOMIZE PLUGINS
