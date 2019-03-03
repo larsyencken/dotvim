@@ -13,4 +13,4 @@ set tw=99
 set colorcolumn=99
 hi ColorColumn ctermbg=darkgrey
 
-let g:syntastic_python_checkers = ['flake8']
+let g:syntastic_python_checkers = ['pycodestyle']
