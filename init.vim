@@ -71,6 +71,7 @@ Plug 'Shougo/deoplete.nvim', { 'do': ':UpdateRemotePlugins' }
 " uppercase SQL
 Plug 'alcesleo/vim-uppercase-sql'
 
+" Python formatting
 Plug 'python/black'
 
 call plug#end()
@@ -225,6 +226,9 @@ endfunction
 autocmd! User GoyoEnter call <SID>goyo_enter()
 autocmd! User GoyoLeave call <SID>goyo_leave()
 
+
+" Automaticlly reformat Python files on write :D
+autocmd BufWritePre *.py execute ':Black'
 
 "
 " RESOURCES
