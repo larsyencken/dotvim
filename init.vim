@@ -74,6 +74,9 @@ Plug 'alcesleo/vim-uppercase-sql'
 " Python formatting
 Plug 'python/black'
 
+" GraphQL
+Plug 'jparise/vim-graphql'
+
 call plug#end()
 
 
