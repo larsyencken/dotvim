@@ -71,6 +71,8 @@ Plug 'Shougo/deoplete.nvim', { 'do': ':UpdateRemotePlugins' }
 " uppercase SQL
 Plug 'alcesleo/vim-uppercase-sql'
 
+Plug 'python/black'
+
 call plug#end()
 
 

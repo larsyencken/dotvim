@@ -14,3 +14,7 @@ set colorcolumn=99
 hi ColorColumn ctermbg=darkgrey
 
 let g:syntastic_python_checkers = ['pycodestyle']
+
+autocmd BufWritePre *.py execute ':Black'
+
+nnoremap <leader>h :Black<cr>
