@@ -4,3 +4,4 @@ backup
 *.pyc
 *.pyo
 plugged
+init-local.vim
