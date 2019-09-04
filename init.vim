@@ -182,7 +182,7 @@ let g:limelight_conceal_ctermfg='darkgrey'
 nnoremap <leader>l :Limelight<cr>
 
 " Vimwiki
-let g:vimwiki_list = [{'path': '~/Documents/lars/notes/', 'syntax': 'markdown', 'ext': '.md', 'index': 'Home'}]
+"let g:vimwiki_list = [{'path': '~/Documents/lifesum/notes/', 'syntax': 'markdown', 'ext': '.md', 'index': 'Home'}]
 
 " OVERRIDE WITH LOCAL SETTINGS
 
