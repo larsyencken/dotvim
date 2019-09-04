@@ -233,8 +233,6 @@ autocmd! User GoyoLeave call <SID>goyo_leave()
 " Automaticlly reformat Python files on write :D
 autocmd BufWritePre *.py execute ':Black'
 
-inoremap ;l <esc>
-
 "
 " RESOURCES
 "
