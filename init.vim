@@ -77,6 +77,9 @@ Plug 'python/black'
 " GraphQL
 Plug 'jparise/vim-graphql'
 
+" Closing windows
+Plug 'rbgrouleff/bclose.vim'
+
 call plug#end()
 
 
@@ -95,7 +98,8 @@ set gdefault
 let mapleader = ","
 
 " Close window on ,b
-nnoremap <leader>b :bd<cr>
+nnoremap <leader>b :Bclose<cr>
+nnoremap <leader>B :bd<cr>
 
 " Stop highlighting a search on ,_
 nnoremap <leader><space> :noh<cr>
@@ -178,7 +182,8 @@ nnoremap <leader>l :Limelight<cr>
 let g:vimwiki_list = [{'path': '~/Documents/lars/notes/', 'syntax': 'markdown', 'ext': '.md', 'index': 'Home'}]
 
 " Escape key binding
-inoremap jj <esc>
+inoremap kj <esc>
+nnoremap KJ :wq<enter>
 
 " OVERRIDE WITH LOCAL SETTINGS
 
