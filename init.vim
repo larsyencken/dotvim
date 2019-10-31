@@ -184,10 +184,6 @@ nnoremap <leader>l :Limelight<cr>
 " Vimwiki
 let g:vimwiki_list = [{'path': '~/Documents/lars/notes/', 'syntax': 'markdown', 'ext': '.md', 'index': 'Home'}]
 
-" Escape key binding
-inoremap kj <esc>
-nnoremap KJ :wq<enter>
-
 " OVERRIDE WITH LOCAL SETTINGS
 
 " Allow customisations for the local machine
