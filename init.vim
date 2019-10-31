@@ -101,6 +101,9 @@ let mapleader = ","
 nnoremap <leader>b :Bclose<cr>
 nnoremap <leader>B :bd<cr>
 
+" Run make
+nnoremap <leader>m :make<cr>
+
 " Stop highlighting a search on ,_
 nnoremap <leader><space> :noh<cr>
 
