@@ -13,8 +13,21 @@ Then open neovim and run `:PlugInstall` to install plugins.
 
 ### Python
 
+Set the python version to use, e.g. in `init-local.vim`:
+
 ```
-pip install flake8
+let g:python_host_prog = '/Users/lars/.pyenv/versions/neovim2/bin/python'
+let g:python3_host_prog = '/Users/lars/.pyenv/versions/neovim3/bin/python'
+```
+
+Install packages you need there: `pip install black flake8 pyls`
+
+Also set up the language server:
+
+```
+let g:LanguageClient_serverCommands = {
+    \ 'python': ['/Users/lars/.pyenv/versions/neovim3/bin/pyls'],
+    \ }
 ```
 
 ### JSON
