@@ -184,14 +184,6 @@ nnoremap <leader>l :Limelight!!<cr>
 " Vimwiki
 "let g:vimwiki_list = [{'path': '~/Documents/lifesum/notes/', 'syntax': 'markdown', 'ext': '.md', 'index': 'Home'}]
 
-" OVERRIDE WITH LOCAL SETTINGS
-
-" Allow customisations for the local machine
-let localrc =  expand("~/.config/nvim/init-local.vim")
-if filereadable(localrc)
-    exe "source " . localrc
-endif
-
 " Deoplete
 let g:deoplete#enable_at_startup = 1
 let g:python_host_prog = '/Users/lars/.pyenv/versions/neovim2/bin/python'
@@ -233,9 +225,18 @@ endfunction
 autocmd! User GoyoEnter call <SID>goyo_enter()
 autocmd! User GoyoLeave call <SID>goyo_leave()
 
-
 " Automaticlly reformat Python files on write :D
 autocmd BufWritePre *.py execute ':Black'
+
+"
+" OVERRIDE WITH LOCAL SETTINGS
+"
+
+" Allow customisations for the local machine
+let localrc =  expand("~/.config/nvim/init-local.vim")
+if filereadable(localrc)
+    exe "source " . localrc
+endif
 
 "
 " RESOURCES
