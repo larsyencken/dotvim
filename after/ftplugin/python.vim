@@ -18,5 +18,5 @@ let g:syntastic_python_checkers = ['flake8']
 " blacken on write
 autocmd BufWritePre *.py execute ':Black'
 
-" ,h to manually blacken a file
-nnoremap <leader>h :Black<cr>
+nnoremap <buffer> <leader>a :call LanguageClient#textDocument_references()<cr>
+nnoremap <buffer> <leader>A :Ack <cword><cr>
