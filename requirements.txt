@@ -3,3 +3,4 @@ pyls-mypy
 pyls-isort
 pyls-black
 black
+neovim
