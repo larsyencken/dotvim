@@ -186,15 +186,15 @@ nnoremap <leader>l :Limelight!!<cr>
 
 " Deoplete
 let g:deoplete#enable_at_startup = 1
-let g:python_host_prog = '/Users/lars/.pyenv/versions/neovim2/bin/python'
-let g:python3_host_prog = '/Users/lars/.pyenv/versions/neovim3/bin/python'
+let g:python_host_prog = expand('~/.pyenv/versions/neovim2/bin/python')
+let g:python3_host_prog = expand('~/.pyenv/versions/neovim3/bin/python')
 
 " Language servers
 set hidden
 
-let g:LanguageClient_serverCommands = {
-    \ 'python': ['/Users/lars/.pyenv/versions/neovim3/bin/pyls'],
-    \ }
+let g:LanguageClient_serverCommands = {'python': [expand('~/.pyenv/versions/neovim3/bin/pyls')]}
+
+let g:LanguageClient_settingsPath = expand("~/.config/nvim/settings.json")
 
 nnoremap <F5> :call LanguageClient_contextMenu()<CR>
 " Or map each action separately
