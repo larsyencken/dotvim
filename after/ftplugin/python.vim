@@ -20,3 +20,7 @@ autocmd BufWritePre *.py execute ':Black'
 
 nnoremap <buffer> <leader>a :call LanguageClient#textDocument_references()<cr>
 nnoremap <buffer> <leader>A :Ack <cword><cr>
+
+if isdirectory(".venv") && executable(".venv/bin/pyls")
+    let g:LanguageClient_serverCommands = {'python': ['.venv/bin/pyls']}
+endif
