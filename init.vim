@@ -227,6 +227,7 @@ autocmd! User GoyoLeave call <SID>goyo_leave()
 
 " Automaticlly reformat Python files on write :D
 autocmd BufWritePre *.py execute ':Black'
+autocmd BufWritePre *.pyi execute ':Black'
 
 "
 " OVERRIDE WITH LOCAL SETTINGS
