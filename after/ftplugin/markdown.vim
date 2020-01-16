@@ -13,3 +13,5 @@ let g:goyo_margin_bottom=1
 nnoremap <buffer> <leader>h :%! ~/Documents/lifesum/notes/scripts/gen-heading "%:t"<cr>
 
 nnoremap <buffer> <leader>, :VimwikiToggleListItem<cr>
+
+autocmd FileType markdown set foldexpr=NestedMarkdownFolds()

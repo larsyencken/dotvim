@@ -53,6 +53,9 @@ Plug 'bumaociyuan/vim-swift'
 Plug 'darfink/vim-plist'
 Plug 'udalov/kotlin-vim'
 
+" markdown folding
+Plug 'masukomi/vim-markdown-folding'
+
 " colorschemes
 Plug 'fxn/vim-monochrome'
 Plug 'dracula/vim'
