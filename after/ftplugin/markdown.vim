@@ -15,3 +15,5 @@ nnoremap <buffer> <leader>h :%! ~/Documents/lifesum/notes/scripts/gen-heading "%
 nnoremap <buffer> <leader>, :VimwikiToggleListItem<cr>
 
 autocmd FileType markdown set foldexpr=NestedMarkdownFolds()
+
+set foldlevel=2
