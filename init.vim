@@ -83,6 +83,9 @@ Plug 'jparise/vim-graphql'
 " Closing windows
 Plug 'rbgrouleff/bclose.vim'
 
+" Sneak motion
+Plug 'justinmk/vim-sneak'
+
 call plug#end()
 
 
