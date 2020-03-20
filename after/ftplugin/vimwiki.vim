@@ -1,1 +1,1 @@
-set filetype=markdown
+"set filetype=markdown
