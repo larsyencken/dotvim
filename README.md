@@ -37,6 +37,12 @@ brew install node
 npm install -g jsonlint
 ```
 
+## Javascript
+
+```
+npm i javascript-typescript-langserver -g
+```
+
 ## Sierra workarounds
 
 ```

@@ -86,6 +86,9 @@ Plug 'rbgrouleff/bclose.vim'
 " Sneak motion
 Plug 'justinmk/vim-sneak'
 
+" ESlint in js
+Plug 'w0rp/ale'
+
 call plug#end()
 
 
@@ -198,7 +201,11 @@ let g:python3_host_prog = expand('~/.pyenv/versions/neovim3/bin/python')
 " Language servers
 set hidden
 
-let g:LanguageClient_serverCommands = {'python': [expand('~/.pyenv/versions/neovim3/bin/pyls')]}
+let g:LanguageClient_serverCommands = {
+    \'python': [expand('~/.pyenv/versions/neovim3/bin/pyls')],
+    \'javascript': ['javascript-typescript-stdio'],
+    \'typescript': ['javascript-typescript-stdio']
+\}
 
 let g:LanguageClient_settingsPath = expand("~/.config/nvim/settings.json")
 
@@ -234,6 +241,14 @@ autocmd! User GoyoLeave call <SID>goyo_leave()
 " Automaticlly reformat Python files on write :D
 autocmd BufWritePre *.py execute ':Black'
 autocmd BufWritePre *.pyi execute ':Black'
+
+" Eslint
+let g:ale_fixers = {
+            \ 'javascript': ['eslint']
+            \ }
+"let g:ale_sign_error = '❌'
+"let g:ale_sign_warning = '⚠️'
+let g:ale_fix_on_save = 1
 
 "
 " OVERRIDE WITH LOCAL SETTINGS
