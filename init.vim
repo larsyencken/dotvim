@@ -75,7 +75,7 @@ Plug 'Shougo/deoplete.nvim', { 'do': ':UpdateRemotePlugins' }
 Plug 'alcesleo/vim-uppercase-sql'
 
 " Python formatting
-Plug 'python/black'
+Plug 'python/black', { 'branch': '19.10b0' }
 
 " GraphQL
 Plug 'jparise/vim-graphql'
