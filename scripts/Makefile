@@ -1,8 +1,10 @@
-.PHONY: test lint black
+.PHONY: test lint black mypy
 
-test: black lint .venv
+default: lint black mypy test
+
+test: .venv
 	@echo '==> Running test suite...'
-	@.venv/bin/pytest
+	@.venv/bin/pytest --cov=.
 
 lint: .venv
 	@echo '==> Checking code style...'
@@ -11,6 +13,10 @@ lint: .venv
 black: .venv
 	@echo '==> Checking formatting...'
 	@.venv/bin/black --quiet --check *.py
+
+mypy: .venv
+	@echo '==> Checking types...'
+	@.venv/bin/mypy --no-error-summary *.py
 
 .venv: requirements.txt
 	@echo '==> Setting up virtual environment...'
