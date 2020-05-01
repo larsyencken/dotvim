@@ -5,3 +5,4 @@ backup
 *.pyo
 plugged
 init-local.vim
+.venv
