@@ -58,3 +58,44 @@ def test_gen_today_header_from_filename():
     header = wiki.gen_header(filename)
     expected = "# 2019-01-17 Thursday\n\n[[2019-01-16]] | [[2019 W3]] | [[2019-01-18]]\n\n## Agenda\n\n\n\n## Tasks"
     assert header == expected
+
+
+def test_gen_week_header_from_filename():
+    filename = "a/b/2020-W19.md"
+    header = wiki.gen_header(filename)
+    expected = (
+        "# 2020 W19\n\n"
+        "[[2020 W18]] | [[2020 Q2]] | [[2020 W20]]\n\n"
+        "## Days\n\n"
+        "- [[2020-05-04]]\n"
+        "- [[2020-05-05]]\n"
+        "- [[2020-05-06]]\n"
+        "- [[2020-05-07]]\n"
+        "- [[2020-05-08]]"
+    )
+    assert header == expected
+
+
+def test_gen_quarter_header_from_filename():
+    filename = "a/b/2020-Q1.md"
+    header = wiki.gen_header(filename)
+    expected = (
+        "# 2020 Q1\n\n"
+        "[[2019 Q4]] | [[2020]] | [[2020 Q2]]\n\n"
+        "## Weeks\n\n"
+        "- [[2020 W1]]\n"
+        "- [[2020 W2]]\n"
+        "- [[2020 W3]]\n"
+        "- [[2020 W4]]\n"
+        "- [[2020 W5]]\n"
+        "- [[2020 W6]]\n"
+        "- [[2020 W7]]\n"
+        "- [[2020 W8]]\n"
+        "- [[2020 W9]]\n"
+        "- [[2020 W10]]\n"
+        "- [[2020 W11]]\n"
+        "- [[2020 W12]]\n"
+        "- [[2020 W13]]\n"
+        "- [[2020 W14]]"
+    )
+    assert header == expected

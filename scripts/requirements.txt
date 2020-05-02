@@ -10,3 +10,4 @@ mypy
 arrow
 coverage
 pytest-cov
+python-dateutil

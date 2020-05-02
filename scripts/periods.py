@@ -34,14 +34,11 @@ class Week:
 
     @property
     def quarter(self) -> "Quarter":
-        q = Quarter.from_date(self[1])
+        q = Quarter.from_date(self[0])
 
         # bump edge-case weeks into more suitable quarters
         if q.year < self.year:
             return q.next
-
-        elif q.year > self.year:
-            return q.prev
 
         return q
 
@@ -60,6 +57,14 @@ class Week:
         return Week(w.year, w.week)
 
     @property
+    def next(self):
+        return Week.from_date(self.last_day + dt.timedelta(days=1))
+
+    @property
+    def prev(self):
+        return Week.from_date(self.first_day - dt.timedelta(days=1))
+
+    @property
     def first_day(self) -> dt.date:
         return self[0]
 
@@ -70,10 +75,6 @@ class Week:
     @property
     def days(self) -> List[dt.date]:
         return [self[i] for i in range(7)]
-
-    @property
-    def isoweek(self) -> isoweek.Week:
-        return isoweek.Week(self.year, self.week_no)
 
 
 @dataclass(eq=True, order=True, frozen=True)
@@ -119,7 +120,7 @@ class Quarter:
 
     @property
     def last_day(self) -> dt.date:
-        return self.next().first_day - dt.timedelta(days=1)
+        return self.next.first_day - dt.timedelta(days=1)
 
     @property
     def weeks(self) -> List[Week]:

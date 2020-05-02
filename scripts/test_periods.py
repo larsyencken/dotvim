@@ -5,6 +5,8 @@
 
 import datetime as dt
 
+from dateutil.relativedelta import relativedelta
+
 from periods import Week, Quarter, iter_dates, next_working_day, prev_working_day
 
 
@@ -15,6 +17,12 @@ def test_week_str():
 
 def test_week_from_str():
     assert Week.from_string("2020 W1") == Week(2020, 1)
+
+
+def test_prev_and_next_week():
+    w = Week(2020, 1)
+    assert w.prev == Week(2019, 52)
+    assert w.next == Week(2020, 2)
 
 
 def test_week_to_quarter():
@@ -37,6 +45,23 @@ def test_days_in_week():
 def test_quarter_str():
     q = Quarter(2020, 1)
     assert str(q) == "2020 Q1"
+
+
+def test_quarter_prev_and_next():
+    q1 = Quarter(2020, 1)
+    assert q1.prev == Quarter(2019, 4)
+    assert q1.next == Quarter(2020, 2)
+
+    q2 = Quarter(2020, 4)
+    assert q2.next == Quarter(2021, 1)
+
+
+def test_quarter_from_date():
+    base = dt.date(2020, 1, 1)
+
+    for i in range(4):
+        d = base + relativedelta(months=i * 3)
+        assert Quarter.from_date(d) == Quarter(2020, i + 1)
 
 
 def test_iter_dates():
