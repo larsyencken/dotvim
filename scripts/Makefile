@@ -2,4 +2,4 @@ include defaults.mk
 
 CODE_LOCATIONS = .
 
-COVERAGE_LIMIT = 96
+COVERAGE_LIMIT = 100

@@ -50,6 +50,7 @@ def test_quarter_str():
 def test_quarter_prev_and_next():
     q1 = Quarter(2020, 1)
     assert q1.prev == Quarter(2019, 4)
+    assert q1.prev.prev == Quarter(2019, 3)
     assert q1.next == Quarter(2020, 2)
 
     q2 = Quarter(2020, 4)

@@ -7,6 +7,8 @@
 
 import datetime as dt
 
+import pytest
+
 import wiki
 from periods import Week, Quarter
 
@@ -22,6 +24,13 @@ def test_date_prefixed_file():
     date, title = f.parse_date()
     assert date == dt.date(2020, 4, 26)
     assert title == "Frankish"
+
+
+def test_date_prefixed_header():
+    filename = "a/b/2020-04-26 Frankish.md"
+    header = wiki.gen_header(filename)
+    expected = "# 2020-04-26 Frankish\n\n[[Frankish]]\n\n"
+    assert header == expected
 
 
 def test_week_prefixed_file():
@@ -74,6 +83,19 @@ def test_gen_week_header_from_filename():
         "- [[2020-05-08]]"
     )
     assert header == expected
+
+
+def test_generic_header_malformed():
+    filename = "a/b/2020-04-Sheep like that.md"
+    header = wiki.gen_header(filename)
+    expected = "# 2020 04 Sheep Like That\n\n"
+    assert header == expected
+
+
+def test_non_markdown_file():
+    filename = "a/b/sheep"
+    with pytest.raises(wiki.NotMarkdownFile):
+        wiki.gen_header(filename)
 
 
 def test_gen_quarter_header_from_filename():

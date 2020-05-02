@@ -33,13 +33,17 @@ def gen_header(filename: str) -> str:
     elif f.is_quarter_prefixed():
         return _gen_quarter_header(f.quarter)
 
-    return _gen_generic_header(f.base)
+    return _gen_generic_header(f.normed_base)
+
+
+class NotMarkdownFile(Exception):
+    pass
 
 
 class WikiFile:
     def __init__(self, filename: str):
         if not filename.endswith(".md"):
-            raise ValueError(filename)
+            raise NotMarkdownFile(filename)
 
         self.filename = filename
         self.base = Path(filename).stem
@@ -61,6 +65,10 @@ class WikiFile:
     @property
     def week(self) -> Week:
         return Week.from_string(self.base)
+
+    @property
+    def normed_base(self) -> str:
+        return _norm_name(self.base)
 
     @property
     def quarter(self) -> Quarter:
@@ -97,7 +105,7 @@ def _gen_day_header(date: dt.date, title: Optional[str]) -> str:
 
 
 def _gen_topic_header(date: dt.date, title: str) -> str:
-    return ""
+    return f"# {date} {title.title()}\n\n[[{title.title()}]]\n\n"
 
 
 def _gen_daily_journal_header(date: dt.date) -> str:
@@ -151,7 +159,7 @@ def _gen_quarter_header(quarter: Quarter) -> str:
 
 
 def _gen_generic_header(title: str) -> str:
-    return ""
+    return f"# {title}\n\n"
 
 
 def _norm_name(n):
