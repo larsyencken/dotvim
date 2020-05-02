@@ -6,3 +6,4 @@ backup
 plugged
 init-local.vim
 .venv
+.coverage
