@@ -81,8 +81,8 @@ Plug 'rbgrouleff/bclose.vim'
 " Sneak motion
 Plug 'justinmk/vim-sneak'
 
-" ESlint in js
-Plug 'w0rp/ale'
+" Async lint engine (esp. for js)
+Plug 'dense-analysis/ale'
 
 " Prettier
 Plug 'prettier/vim-prettier', {
