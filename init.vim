@@ -45,13 +45,8 @@ Plug 'kana/vim-textobj-user'
 Plug 'junegunn/goyo.vim'
 Plug 'junegunn/limelight.vim'
 
-" more syntax support
-Plug 'JuliaEditorSupport/julia-vim'
-Plug 'lepture/vim-jinja'
-Plug 'ElmCast/elm-vim'
-Plug 'bumaociyuan/vim-swift'
-Plug 'darfink/vim-plist'
-Plug 'udalov/kotlin-vim'
+" Language support for many languages
+Plug 'sheerun/vim-polyglot'
 
 " markdown folding
 Plug 'masukomi/vim-markdown-folding'
