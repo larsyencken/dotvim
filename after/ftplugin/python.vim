@@ -14,6 +14,7 @@ set colorcolumn=99
 hi ColorColumn ctermbg=darkgrey
 
 let g:syntastic_python_checkers = ['flake8']
+let b:ale_linters = ['flake8']
 
 " blacken on write
 autocmd BufWritePre *.py execute ':Black'
