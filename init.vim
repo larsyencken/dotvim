@@ -233,17 +233,19 @@ endfunction
 autocmd! User GoyoEnter call <SID>goyo_enter()
 autocmd! User GoyoLeave call <SID>goyo_leave()
 
-" Automaticlly reformat Python files on write :D
+" Automatically reformat Python files on write :D
 autocmd BufWritePre *.py execute ':Black'
 autocmd BufWritePre *.pyi execute ':Black'
 
 " Eslint
 let g:ale_fixers = {
-            \ 'javascript': ['eslint']
+            \ 'javascript': ['eslint'],
+            \ 'python': ['black']
             \ }
 "let g:ale_sign_error = '❌'
 "let g:ale_sign_warning = '⚠️'
 let g:ale_fix_on_save = 1
+
 "
 " OVERRIDE WITH LOCAL SETTINGS
 "
