@@ -19,7 +19,8 @@ let b:ale_linters = ['flake8']
 " blacken on write
 autocmd BufWritePre *.py execute ':Black'
 
-nnoremap <buffer> <leader>a :call LanguageClient#textDocument_references()<cr>
+nnoremap <buffer> <leader>a :call LanguageClient_textDocument_references()<cr>
+nnoremap <buffer> <leader>r :call LanguageClient_textDocument_rename()<cr>
 nnoremap <buffer> <leader>A :Ack <cword><cr>
 
 if isdirectory(".venv") && executable(".venv/bin/pyls")
