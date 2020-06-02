@@ -33,6 +33,9 @@ def gen_header(filename: str) -> str:
     elif f.is_quarter_prefixed():
         return _gen_quarter_header(f.quarter)
 
+    elif f.is_year():
+        return _gen_year_header(f.year)
+
     return _gen_generic_header(f.normed_base)
 
 
@@ -57,10 +60,13 @@ class WikiFile:
         return True
 
     def is_week_prefixed(self) -> bool:
-        return bool(re.match("20[0-9]{2}-W[0-9]{1,2}", self.base))
+        return bool(re.match("^20[0-9]{2}-W[0-9]{1,2}", self.base))
 
     def is_quarter_prefixed(self) -> bool:
-        return bool(re.match("20[0-9]{2}-Q[1-4]", self.base))
+        return bool(re.match("^20[0-9]{2}-Q[1-4]", self.base))
+
+    def is_year(self) -> bool:
+        return bool(re.match("^(19|20)[0-9]{2}$", self.base))
 
     @property
     def week(self) -> Week:
@@ -73,6 +79,10 @@ class WikiFile:
     @property
     def quarter(self) -> Quarter:
         return Quarter.from_string(self.base)
+
+    @property
+    def year(self) -> int:
+        return int(self.base)
 
     def parse_date(self) -> Tuple[dt.date, Optional[str]]:
         s = self.base
@@ -154,6 +164,19 @@ def _gen_quarter_header(quarter: Quarter) -> str:
 
     for week in quarter.weeks:
         parts.append(f"- [[{week}]]")
+
+    return "\n".join(parts)
+
+
+def _gen_year_header(year: int) -> str:
+    parts = [
+        f"# {year}",
+        "",
+        f"[[{year - 1}]] | [[Home]] | [[{year + 1}]]",
+        "",
+        "## Major life events",
+        "",
+    ]
 
     return "\n".join(parts)
 

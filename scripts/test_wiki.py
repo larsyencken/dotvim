@@ -33,6 +33,13 @@ def test_date_prefixed_header():
     assert header == expected
 
 
+def test_year_header():
+    filename = "a/b/2020.md"
+    header = wiki.gen_header(filename)
+    expected = "# 2020\n\n[[2019]] | [[Home]] | [[2021]]\n\n## Major life events\n"
+    assert header == expected
+
+
 def test_week_prefixed_file():
     filename = "a/b/2020-W12.md"
     f = wiki.WikiFile(filename)
