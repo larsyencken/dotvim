@@ -129,7 +129,7 @@ def _gen_daily_journal_header(date: dt.date) -> str:
     day_of_week = calendar.day_name[date.weekday()]
 
     return (
-        f"# {date.year} W{week_no} {day_of_week}\n\n"
+        f"# {date} W{week_no} {day_of_week}\n\n"
         f"[[{lhs_date}]] | [[{week_wiki}]] | [[{rhs_date}]]\n\n"
         f"## Agenda\n\n\n\n"
         f"## Tasks"
