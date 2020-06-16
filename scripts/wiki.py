@@ -115,7 +115,7 @@ def _gen_day_header(date: dt.date, title: Optional[str]) -> str:
 
 
 def _gen_topic_header(date: dt.date, title: str) -> str:
-    return f"# {date} {title.title()}\n\n[[{title.title()}]]\n\n"
+    return f"# {date} {title.title()}\n\n[[../{title.title()}]] | [[{date}]]\n\n"
 
 
 def _gen_daily_journal_header(date: dt.date) -> str:

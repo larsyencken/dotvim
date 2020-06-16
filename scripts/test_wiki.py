@@ -29,7 +29,7 @@ def test_date_prefixed_file():
 def test_date_prefixed_header():
     filename = "a/b/2020-04-26 Frankish.md"
     header = wiki.gen_header(filename)
-    expected = "# 2020-04-26 Frankish\n\n[[Frankish]]\n\n"
+    expected = "# 2020-04-26 Frankish\n\n[[../Frankish]] | [[2020-04-26]]\n\n"
     assert header == expected
 
 
