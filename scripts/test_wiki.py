@@ -95,7 +95,14 @@ def test_gen_week_header_from_filename():
 def test_generic_header_malformed():
     filename = "a/b/2020-04-Sheep like that.md"
     header = wiki.gen_header(filename)
-    expected = "# 2020 04 Sheep Like That\n\n"
+    expected = "# 2020 04 Sheep Like That\n\n[[Home]]\n"
+    assert header == expected
+
+
+def test_generic_header():
+    filename = "a/b/Sheep like that.md"
+    header = wiki.gen_header(filename)
+    expected = "# Sheep Like That\n\n[[Home]]\n"
     assert header == expected
 
 

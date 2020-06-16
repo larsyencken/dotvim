@@ -182,7 +182,7 @@ def _gen_year_header(year: int) -> str:
 
 
 def _gen_generic_header(title: str) -> str:
-    return f"# {title}\n\n"
+    return f"# {title}\n\n[[Home]]\n"
 
 
 def _norm_name(n):
