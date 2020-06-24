@@ -84,6 +84,12 @@ Plug 'justinmk/vim-sneak'
 " ESlint in js
 Plug 'w0rp/ale'
 
+" Prettier
+Plug 'prettier/vim-prettier', {
+  \ 'do': 'yarn install',
+  \ 'branch': 'release/0.x'
+  \ }
+
 call plug#end()
 
 
@@ -236,6 +242,9 @@ autocmd! User GoyoLeave call <SID>goyo_leave()
 " Automatically reformat Python files on write :D
 autocmd BufWritePre *.py execute ':Black'
 autocmd BufWritePre *.pyi execute ':Black'
+
+" Autoformat js on write
+autocmd BufWritePre *.js execute ':Prettier'
 
 " Eslint
 let g:ale_fixers = {
