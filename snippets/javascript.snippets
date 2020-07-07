@@ -83,3 +83,12 @@ snippet prop
 	  "description": "${2}",
 	  "type": "${3:string}"
 	},
+snippet id
+	id INT AUTO_INCREMENT PRIMARY KEY,
+snippet fk
+	FOREIGN KEY (${1}) REFERENCES ${2}(${3}) ON DELETE RESTRICT,
+snippet created
+	created TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
+snippet updated
+	updated TIMESTAMP DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
+
