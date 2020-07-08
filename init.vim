@@ -67,7 +67,7 @@ Plug 'junegunn/fzf'
 Plug 'Shougo/deoplete.nvim', { 'do': ':UpdateRemotePlugins' }
 
 " uppercase SQL
-Plug 'alcesleo/vim-uppercase-sql'
+Plug 'larsyencken/vim-uppercase-sql'
 
 " Python formatting
 Plug 'python/black', { 'branch': '19.10b0' }
