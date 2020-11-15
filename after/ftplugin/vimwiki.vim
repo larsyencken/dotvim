@@ -1,1 +1,2 @@
-"set filetype=markdown
+inoremap __tick ✓
+inoremap __cross ✗
