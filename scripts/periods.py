@@ -20,11 +20,7 @@ class Week:
 
     @property
     def working_days(self) -> List[dt.date]:
-        days = []
-        for i in range(0, 5):
-            days.append(self[i])
-
-        return days
+        return [self[i] for i in range(5)]
 
     def __getitem__(self, i):
         "Return 0-indexed dates of the week."

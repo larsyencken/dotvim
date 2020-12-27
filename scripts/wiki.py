@@ -149,7 +149,7 @@ def _gen_week_header(week: Week) -> str:
         "",
     ]
 
-    for day in week.working_days:
+    for day in week.days:
         parts.append(f"- [[{day}]]")
 
     return "\n".join(parts)

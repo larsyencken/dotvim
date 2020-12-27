@@ -42,6 +42,13 @@ def test_days_in_week():
     assert w.days == days
 
 
+def test_working_days_in_week():
+    w = Week(2020, 1)
+    start_date = dt.date(2019, 12, 30)
+    days = list(iter_dates(start_date, start_date + dt.timedelta(days=5)))
+    assert w.working_days == days
+
+
 def test_quarter_str():
     q = Quarter(2020, 1)
     assert str(q) == "2020 Q1"
