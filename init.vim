@@ -258,6 +258,9 @@ let g:ale_fix_on_save = 1
 " yank entire file to clipboard
 nnoremap <leader>y ggyG
 
+" Snipmate: disable deprecation message
+let g:snipMate = { 'snippet_version' : 1 }
+
 "
 " OVERRIDE WITH LOCAL SETTINGS
 "
