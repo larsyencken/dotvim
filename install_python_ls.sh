@@ -6,7 +6,7 @@ usage() {
 }
 
 install_language_server() {
-    $1/bin/pip install 'python-language-server[all]' pyls-mypy pyls-black pyls-isort
+    $1/bin/pip install 'python-language-server[all]' pyls-mypy pyls-black pyls-isort neovim
 }
 
 if [ $# -eq 1 ]; then
