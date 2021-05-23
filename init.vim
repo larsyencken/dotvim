@@ -90,6 +90,9 @@ Plug 'prettier/vim-prettier', {
   \ 'branch': 'release/0.x'
   \ }
 
+" Pollen for racket
+Plug 'otherjoel/vim-pollen'
+
 call plug#end()
 
 
@@ -260,6 +263,22 @@ nnoremap <leader>y ggyG
 
 " Snipmate: disable deprecation message
 let g:snipMate = { 'snippet_version' : 1 }
+
+" Pollen filetype detection
+augroup configgroup
+    autocmd!
+
+    "Set Pollen syntax for files with these extensions:
+    au! BufRead,BufNewFile *.pm set filetype=pollen
+    au! BufRead,BufNewFile *.pmd set filetype=pollen
+    au! BufRead,BufNewFile *.pp set filetype=pollen
+    au! BufRead,BufNewFile *.ptree set filetype=pollen
+    au! BufRead,BufNewFile *.rkt set filetype=racket
+
+    " Suggested editor settings:
+    autocmd FileType pollen setlocal wrap      " Soft wrap (don't affect buffer)
+    autocmd FileType pollen setlocal linebreak " Wrap on word-breaks only
+augroup END
 
 "
 " OVERRIDE WITH LOCAL SETTINGS
