@@ -281,6 +281,25 @@ augroup configgroup
 augroup END
 
 "
+"  automatically enter Goyo for markdown or vimwiki
+"
+function! s:auto_goyo()
+  if &ft == 'markdown' || &ft == 'vimwiki'
+    Goyo 80
+  else
+    let bufnr = bufnr('%')
+    Goyo!
+    execute 'b '.bufnr
+  endif
+endfunction
+
+augroup goyo_markdown
+  autocmd!
+  autocmd BufNewFile,BufRead * call s:auto_goyo()
+  autocmd BufEnter * call s:auto_goyo()
+augroup END
+
+"
 " OVERRIDE WITH LOCAL SETTINGS
 "
 
