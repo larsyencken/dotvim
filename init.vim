@@ -59,12 +59,7 @@ Plug 'dracula/vim'
 Plug 'larsyencken/vimwiki'
 
 " language server
-Plug 'autozimu/LanguageClient-neovim', {
-    \ 'branch': 'next',
-    \ 'do': 'bash install.sh',
-    \ }
-Plug 'junegunn/fzf'
-Plug 'Shougo/deoplete.nvim', { 'do': ':UpdateRemotePlugins' }
+Plug 'neovim/nvim-lspconfig'
 
 " uppercase SQL
 Plug 'larsyencken/vim-uppercase-sql'
@@ -197,27 +192,7 @@ nnoremap <leader>l :Limelight!!<cr>
 " Vimwiki
 "let g:vimwiki_list = [{'path': '~/Documents/lifesum/notes/', 'syntax': 'markdown', 'ext': '.md', 'index': 'Home'}]
 
-" Deoplete
-let g:deoplete#enable_at_startup = 1
-"let g:python_host_prog = expand('~/.pyenv/versions/neovim2/bin/python')
-let g:python3_host_prog = expand('~/.pyenv/versions/neovim3/bin/python')
-
-" Language servers
 set hidden
-
-let g:LanguageClient_serverCommands = {
-    \'python': [expand('~/.pyenv/versions/neovim3/bin/pyls')],
-    \'javascript': ['javascript-typescript-stdio'],
-    \'typescript': ['javascript-typescript-stdio']
-\}
-
-let g:LanguageClient_settingsPath = expand("~/.config/nvim/settings.json")
-
-nnoremap <F5> :call LanguageClient_contextMenu()<CR>
-" Or map each action separately
-nnoremap <silent> K :call LanguageClient#textDocument_hover()<CR>
-nnoremap <silent> gd :call LanguageClient#textDocument_definition()<CR>
-nnoremap <silent> <F2> :call LanguageClient#textDocument_rename()<CR>
 
 " Quit with :q even in Goyo mode
 function! s:goyo_enter()
@@ -298,6 +273,12 @@ augroup goyo_markdown
   autocmd BufNewFile,BufRead * call s:auto_goyo()
   autocmd BufEnter * call s:auto_goyo()
 augroup END
+
+"
+" faster viewport scrolling
+"
+nnoremap <c-e> 5<c-e>
+nnoremap <c-y> 5<c-y>
 
 "
 " OVERRIDE WITH LOCAL SETTINGS
