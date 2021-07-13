@@ -65,7 +65,7 @@ Plug 'neovim/nvim-lspconfig'
 Plug 'larsyencken/vim-uppercase-sql'
 
 " Python formatting
-Plug 'python/black', { 'branch': '19.10b0' }
+Plug 'python/black'
 
 " GraphQL
 Plug 'jparise/vim-graphql'
