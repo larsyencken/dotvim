@@ -17,7 +17,5 @@ def header(filename):
     print(h)
 
 
-
-
 if __name__ == "__main__":
     header()
