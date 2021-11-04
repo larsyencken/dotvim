@@ -1,92 +1,10 @@
 "
 "  init.vim
 "
-"  Lars Yencken <lars@yencken.org>
-"
 
 " LOADING PLUGINS
 
 call plug#begin()
-
-" navigation between files
-Plug 'ctrlpvim/ctrlp.vim'
-
-" better git support
-Plug 'tpope/vim-fugitive'
-Plug 'airblade/vim-gitgutter'
-
-" better status line
-Plug 'vim-airline/vim-airline'
-Plug 'vim-airline/vim-airline-themes'
-
-" snippets
-Plug 'vim-scripts/tlib'
-Plug 'MarcWeber/vim-addon-mw-utils'
-Plug 'garbas/vim-snipmate'
-
-" better indending for Python
-Plug 'hynek/vim-python-pep8-indent'
-
-" quick commenting and uncommenting
-Plug 'scrooloose/nerdcommenter'
-
-" add ack support
-Plug 'mileszs/ack.vim'
-
-" work with matching pairs of brackets or quotes
-Plug 'tpope/vim-surround'
-
-" handle more text objects like Python triple quote
-Plug 'paradigm/TextObjectify'
-Plug 'bps/vim-textobj-python'
-Plug 'kana/vim-textobj-user'
-
-" distraction free writing
-Plug 'junegunn/goyo.vim'
-Plug 'junegunn/limelight.vim'
-
-" Language support for many languages
-Plug 'sheerun/vim-polyglot'
-
-" markdown folding
-Plug 'masukomi/vim-markdown-folding'
-
-" colorschemes
-Plug 'fxn/vim-monochrome'
-Plug 'dracula/vim'
-
-" vimwiki
-Plug 'larsyencken/vimwiki'
-
-" language server
-Plug 'neovim/nvim-lspconfig'
-
-" uppercase SQL
-Plug 'larsyencken/vim-uppercase-sql'
-
-" Python formatting
-Plug 'python/black'
-
-" GraphQL
-Plug 'jparise/vim-graphql'
-
-" Closing windows
-Plug 'rbgrouleff/bclose.vim'
-
-" Sneak motion
-Plug 'justinmk/vim-sneak'
-
-" Async lint engine (esp. for js)
-Plug 'dense-analysis/ale'
-
-" Prettier
-Plug 'prettier/vim-prettier', {
-  \ 'do': 'yarn install',
-  \ 'branch': 'release/0.x'
-  \ }
-
-" Pollen for racket
-Plug 'otherjoel/vim-pollen'
 
 call plug#end()
 
@@ -108,9 +26,6 @@ let mapleader = ","
 " Close window on ,b
 nnoremap <leader>b :Bclose<cr>
 nnoremap <leader>B :bd<cr>
-
-" Run make
-nnoremap <leader>m :make<cr>
 
 " Stop highlighting a search on ,_
 nnoremap <leader><space> :noh<cr>
@@ -152,133 +67,17 @@ function! HandleURL()
 endfunction
 map <leader>u :call HandleURL()<cr>
 
-"colorscheme dracula
 set background=dark
-
-
-" CUSTOMIZE PLUGINS
-
-" Configure ctrl-p plugin for finding files
-
-" ,t to open any file
-let g:ctrlp_map = '<leader>t'
-" ,f to switch to a file that's already open
-nnoremap <leader>f :CtrlPBuffer<cr>
-" never include these filetypes in the list
-set wildignore+=*.o,*.6,.git,.hg,.svn,*.a,*.so,*.out,*.bbl,*.swp,*.toc,_obj,_test,*-env,*.pyc,*.pyo,*.png,*.jpg,blueprint,*.os,*.gif,*.tar,*.tar.gz,*.tar.bz2,build,dist,*.egg-info,bin,*.class,*.jar,env,lib,__pycache__,tags,elm-stuff,node_modules,plugged,*.mp4,vendor
-
-" Airline
-let g:airline_theme= 'serene'
-
-" Jedi
-let g:jedi#smart_auto_mappings = 0  " turn off completion of from ... import
-
-" Ack
-if executable('ag')
-  let g:ackprg = 'ag --vimgrep'
-endif
-nnoremap <leader>a :Ack <cword><cr>
-
-" Goyo
-nnoremap <leader>g :Goyo<cr>
-let g:goyo_width=120
-let g:goyo_margin_top=1
-let g:goyo_margin_bottom=1
-
-" Limelight
-let g:limelight_conceal_ctermfg='darkgrey'
-nnoremap <leader>l :Limelight!!<cr>
-
-" Vimwiki
-"let g:vimwiki_list = [{'path': '~/Documents/lifesum/notes/', 'syntax': 'markdown', 'ext': '.md', 'index': 'Home'}]
-
-set hidden
-
-" Quit with :q even in Goyo mode
-function! s:goyo_enter()
-  let b:quitting = 0
-  let b:quitting_bang = 0
-  autocmd! QuitPre <buffer> let b:quitting = 1
-  cabbrev <buffer> q! let b:quitting_bang = 1 <bar> q!
-  "autocmd BufWinLeave <buffer> :Goyo
-endfunction
-
-function! s:goyo_leave()
-  " Quit Vim if this is the only remaining buffer
-  if b:quitting && len(filter(range(1, bufnr('$')), 'buflisted(v:val)')) == 1
-    if b:quitting_bang
-      qa!
-    else
-      qa
-    endif
-  endif
-endfunction
-
-autocmd! User GoyoEnter call <SID>goyo_enter()
-autocmd! User GoyoLeave call <SID>goyo_leave()
-
-" Automatically reformat Python files on write :D
-autocmd BufWritePre *.py execute ':Black'
-autocmd BufWritePre *.pyi execute ':Black'
-
-" Autoformat js on write
-autocmd BufWritePre *.js execute ':Prettier'
-
-" Eslint
-let g:ale_fixers = {
-            \ 'javascript': ['eslint'],
-            \ 'python': ['black']
-            \ }
-"let g:ale_sign_error = '❌'
-"let g:ale_sign_warning = '⚠️'
-let g:ale_fix_on_save = 1
-
-" yank entire file to clipboard
-nnoremap <leader>y ggyG
-
-" Snipmate: disable deprecation message
-let g:snipMate = { 'snippet_version' : 1 }
-
-" Pollen filetype detection
-augroup configgroup
-    autocmd!
-
-    "Set Pollen syntax for files with these extensions:
-    au! BufRead,BufNewFile *.pm set filetype=pollen
-    au! BufRead,BufNewFile *.pmd set filetype=pollen
-    au! BufRead,BufNewFile *.pp set filetype=pollen
-    au! BufRead,BufNewFile *.ptree set filetype=pollen
-    au! BufRead,BufNewFile *.rkt set filetype=racket
-
-    " Suggested editor settings:
-    autocmd FileType pollen setlocal wrap      " Soft wrap (don't affect buffer)
-    autocmd FileType pollen setlocal linebreak " Wrap on word-breaks only
-augroup END
-
-"
-"  automatically enter Goyo for markdown or vimwiki
-"
-function! s:auto_goyo()
-  if &ft == 'markdown' || &ft == 'vimwiki'
-    Goyo 80
-  else
-    let bufnr = bufnr('%')
-    Goyo!
-    execute 'b '.bufnr
-  endif
-endfunction
-
-augroup goyo_markdown
-  autocmd!
-  autocmd BufNewFile,BufRead * call s:auto_goyo()
-  autocmd BufEnter * call s:auto_goyo()
-augroup END
 
 "
 " faster viewport scrolling
 "
 nnoremap <c-e> 5<c-e>
 nnoremap <c-y> 5<c-y>
+
+"
+" CUSTOMIZE PLUGINS
+"
 
 "
 " OVERRIDE WITH LOCAL SETTINGS
