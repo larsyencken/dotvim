@@ -36,7 +36,7 @@ Plug 'junegunn/goyo.vim'
 Plug 'junegunn/limelight.vim'
 
 " wiki support
-Plug 'vimwiki/vimwiki'
+Plug 'larsyencken/vimwiki'
 
 " python formatting
 Plug 'python/black'
