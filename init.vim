@@ -20,6 +20,27 @@ Plug 'hrsh7th/nvim-cmp'
 Plug 'hrsh7th/cmp-vsnip'
 Plug 'hrsh7th/vim-vsnip'
 
+" Github Copilot
+Plug 'github/copilot.vim'
+
+" Navigation between files
+Plug 'junegunn/fzf', { 'do': { -> fzf#install() } }
+Plug 'junegunn/fzf.vim'
+
+" Better git support
+Plug 'tpope/vim-fugitive'
+Plug 'airblade/vim-gitgutter'
+
+" distraction free writing
+Plug 'junegunn/goyo.vim'
+Plug 'junegunn/limelight.vim'
+
+" wiki support
+Plug 'vimwiki/vimwiki'
+
+" python formatting
+Plug 'python/black'
+
 call plug#end()
 
 
@@ -37,9 +58,10 @@ set gdefault
 " Use comma for custom commands
 let mapleader = ","
 
-" Close window on ,b
-nnoremap <leader>b :Bclose<cr>
-nnoremap <leader>B :bd<cr>
+" Close buffer on ,b
+nnoremap <leader>b :bd<cr>
+" Close window only on ,B (keep buffer open)
+nnoremap <leader>B :close<cr>
 
 " Stop highlighting a search on ,_
 nnoremap <leader><space> :noh<cr>
@@ -206,6 +228,26 @@ lua << EOF
     capabilities = capabilities
   }
 EOF
+
+
+" Goyo
+nnoremap <leader>g :Goyo<cr>
+let g:goyo_width=120
+let g:goyo_margin_top=1
+let g:goyo_margin_bottom=1
+
+" Limelight
+let g:limelight_conceal_ctermfg='darkgrey'
+nnoremap <leader>l :Limelight!!<cr>
+
+" ,t to open any file
+nnoremap <leader>t :Files<cr>
+" ,f to switch to a file that's already open
+nnoremap <leader>f :Buffers<cr>
+
+" never include these filetypes in the list
+set wildignore+=*.o,*.6,.git,.hg,.svn,*.a,*.so,*.out,*.bbl,*.swp,*.toc,_obj,_test,*-env,*.pyc,*.pyo,*.png,*.jpg,blueprint,*.os,*.gif,*.tar,*.tar.gz,*.tar.bz2,build,dist,*.egg-info,bin,*.class,*.jar,env,lib,__pycache__,tags,elm-stuff,node_modules,plugged,*.mp4,vendor,*.feather,*.ipynb
+
 
 "
 " OVERRIDE WITH LOCAL SETTINGS
