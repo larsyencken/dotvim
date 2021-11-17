@@ -1,92 +1,45 @@
 "
 "  init.vim
 "
-"  Lars Yencken <lars@yencken.org>
-"
 
 " LOADING PLUGINS
 
 call plug#begin()
 
-" navigation between files
-Plug 'ctrlpvim/ctrlp.vim'
+" language server support
+Plug 'neovim/nvim-lspconfig'
 
-" better git support
-Plug 'tpope/vim-fugitive'
-Plug 'airblade/vim-gitgutter'
-
-" better status line
-Plug 'vim-airline/vim-airline'
-Plug 'vim-airline/vim-airline-themes'
+" autocompletion
+Plug 'hrsh7th/cmp-nvim-lsp'
+Plug 'hrsh7th/cmp-buffer'
+Plug 'hrsh7th/cmp-path'
+Plug 'hrsh7th/cmp-cmdline'
+Plug 'hrsh7th/nvim-cmp'
 
 " snippets
-Plug 'vim-scripts/tlib'
-Plug 'MarcWeber/vim-addon-mw-utils'
-Plug 'garbas/vim-snipmate'
+Plug 'hrsh7th/cmp-vsnip'
+Plug 'hrsh7th/vim-vsnip'
 
-" better indending for Python
-Plug 'hynek/vim-python-pep8-indent'
+" Github Copilot
+Plug 'github/copilot.vim'
 
-" quick commenting and uncommenting
-Plug 'scrooloose/nerdcommenter'
+" Navigation between files
+Plug 'junegunn/fzf', { 'do': { -> fzf#install() } }
+Plug 'junegunn/fzf.vim'
 
-" add ack support
-Plug 'mileszs/ack.vim'
-
-" work with matching pairs of brackets or quotes
-Plug 'tpope/vim-surround'
-
-" handle more text objects like Python triple quote
-Plug 'paradigm/TextObjectify'
-Plug 'bps/vim-textobj-python'
-Plug 'kana/vim-textobj-user'
+" Better git support
+Plug 'tpope/vim-fugitive'
+Plug 'airblade/vim-gitgutter'
 
 " distraction free writing
 Plug 'junegunn/goyo.vim'
 Plug 'junegunn/limelight.vim'
 
-" Language support for many languages
-Plug 'sheerun/vim-polyglot'
-
-" markdown folding
-Plug 'masukomi/vim-markdown-folding'
-
-" colorschemes
-Plug 'fxn/vim-monochrome'
-Plug 'dracula/vim'
-
-" vimwiki
+" wiki support
 Plug 'larsyencken/vimwiki'
 
-" language server
-Plug 'neovim/nvim-lspconfig'
-
-" uppercase SQL
-Plug 'larsyencken/vim-uppercase-sql'
-
-" Python formatting
+" python formatting
 Plug 'python/black'
-
-" GraphQL
-Plug 'jparise/vim-graphql'
-
-" Closing windows
-Plug 'rbgrouleff/bclose.vim'
-
-" Sneak motion
-Plug 'justinmk/vim-sneak'
-
-" Async lint engine (esp. for js)
-Plug 'dense-analysis/ale'
-
-" Prettier
-Plug 'prettier/vim-prettier', {
-  \ 'do': 'yarn install',
-  \ 'branch': 'release/0.x'
-  \ }
-
-" Pollen for racket
-Plug 'otherjoel/vim-pollen'
 
 call plug#end()
 
@@ -105,12 +58,10 @@ set gdefault
 " Use comma for custom commands
 let mapleader = ","
 
-" Close window on ,b
-nnoremap <leader>b :Bclose<cr>
-nnoremap <leader>B :bd<cr>
-
-" Run make
-nnoremap <leader>m :make<cr>
+" Close buffer on ,b
+nnoremap <leader>b :bd<cr>
+" Close window only on ,B (keep buffer open)
+nnoremap <leader>B :close<cr>
 
 " Stop highlighting a search on ,_
 nnoremap <leader><space> :noh<cr>
@@ -152,32 +103,132 @@ function! HandleURL()
 endfunction
 map <leader>u :call HandleURL()<cr>
 
-"colorscheme dracula
 set background=dark
 
+" recommended: https://github.com/hrsh7th/nvim-cmp/
+set completeopt=menu,menuone,noselect
 
+"
+" faster viewport scrolling
+"
+nnoremap <c-e> 5<c-e>
+nnoremap <c-y> 5<c-y>
+
+"
+" LANGUAGE SERVERS
+"
+lua << EOF
+require'lspconfig'.pyright.setup{}
+
+local nvim_lsp = require('lspconfig')
+
+-- Use an on_attach function to only map the following keys
+-- after the language server attaches to the current buffer
+local on_attach = function(client, bufnr)
+  local function buf_set_keymap(...) vim.api.nvim_buf_set_keymap(bufnr, ...) end
+  local function buf_set_option(...) vim.api.nvim_buf_set_option(bufnr, ...) end
+
+  -- Enable completion triggered by <c-x><c-o>
+  buf_set_option('omnifunc', 'v:lua.vim.lsp.omnifunc')
+
+  -- Mappings.
+  local opts = { noremap=true, silent=true }
+
+  -- See `:help vim.lsp.*` for documentation on any of the below functions
+  buf_set_keymap('n', 'gD', '<cmd>lua vim.lsp.buf.declaration()<CR>', opts)
+  buf_set_keymap('n', 'gd', '<cmd>lua vim.lsp.buf.definition()<CR>', opts)
+  buf_set_keymap('n', 'K', '<cmd>lua vim.lsp.buf.hover()<CR>', opts)
+  buf_set_keymap('n', 'gi', '<cmd>lua vim.lsp.buf.implementation()<CR>', opts)
+  buf_set_keymap('n', '<C-k>', '<cmd>lua vim.lsp.buf.signature_help()<CR>', opts)
+  buf_set_keymap('n', '<space>wa', '<cmd>lua vim.lsp.buf.add_workspace_folder()<CR>', opts)
+  buf_set_keymap('n', '<space>wr', '<cmd>lua vim.lsp.buf.remove_workspace_folder()<CR>', opts)
+  buf_set_keymap('n', '<space>wl', '<cmd>lua print(vim.inspect(vim.lsp.buf.list_workspace_folders()))<CR>', opts)
+  buf_set_keymap('n', '<space>D', '<cmd>lua vim.lsp.buf.type_definition()<CR>', opts)
+  buf_set_keymap('n', '<space>rn', '<cmd>lua vim.lsp.buf.rename()<CR>', opts)
+  buf_set_keymap('n', '<space>ca', '<cmd>lua vim.lsp.buf.code_action()<CR>', opts)
+  buf_set_keymap('n', 'gr', '<cmd>lua vim.lsp.buf.references()<CR>', opts)
+  buf_set_keymap('n', '<space>e', '<cmd>lua vim.lsp.diagnostic.show_line_diagnostics()<CR>', opts)
+  buf_set_keymap('n', '[d', '<cmd>lua vim.lsp.diagnostic.goto_prev()<CR>', opts)
+  buf_set_keymap('n', ']d', '<cmd>lua vim.lsp.diagnostic.goto_next()<CR>', opts)
+  buf_set_keymap('n', '<space>q', '<cmd>lua vim.lsp.diagnostic.set_loclist()<CR>', opts)
+  buf_set_keymap('n', '<space>f', '<cmd>lua vim.lsp.buf.formatting()<CR>', opts)
+
+end
+
+-- Use a loop to conveniently call 'setup' on multiple servers and
+-- map buffer local keybindings when the language server attaches
+local servers = { 'pyright', 'tsserver' }
+for _, lsp in ipairs(servers) do
+  nvim_lsp[lsp].setup {
+    on_attach = on_attach,
+    flags = {
+      debounce_text_changes = 150,
+    }
+  }
+end
+EOF
+
+"
 " CUSTOMIZE PLUGINS
+"
 
-" Configure ctrl-p plugin for finding files
+lua << EOF
+  -- Setup nvim-cmp.
+  local cmp = require'cmp'
 
-" ,t to open any file
-let g:ctrlp_map = '<leader>t'
-" ,f to switch to a file that's already open
-nnoremap <leader>f :CtrlPBuffer<cr>
-" never include these filetypes in the list
-set wildignore+=*.o,*.6,.git,.hg,.svn,*.a,*.so,*.out,*.bbl,*.swp,*.toc,_obj,_test,*-env,*.pyc,*.pyo,*.png,*.jpg,blueprint,*.os,*.gif,*.tar,*.tar.gz,*.tar.bz2,build,dist,*.egg-info,bin,*.class,*.jar,env,lib,__pycache__,tags,elm-stuff,node_modules,plugged,*.mp4,vendor
+  cmp.setup({
+    snippet = {
+      -- REQUIRED - you must specify a snippet engine
+      expand = function(args)
+        vim.fn["vsnip#anonymous"](args.body) -- For `vsnip` users.
+      end,
+    },
+    mapping = {
+      ['<C-d>'] = cmp.mapping(cmp.mapping.scroll_docs(-4), { 'i', 'c' }),
+      ['<C-f>'] = cmp.mapping(cmp.mapping.scroll_docs(4), { 'i', 'c' }),
+      ['<C-Space>'] = cmp.mapping(cmp.mapping.complete(), { 'i', 'c' }),
+      ['<C-y>'] = cmp.config.disable, -- Specify `cmp.config.disable` if you want to remove the default `<C-y>` mapping.
+      ['<C-e>'] = cmp.mapping({
+        i = cmp.mapping.abort(),
+        c = cmp.mapping.close(),
+      }),
+      ['<CR>'] = cmp.mapping.confirm({ select = true }),
+    },
+    sources = cmp.config.sources({
+      { name = 'nvim_lsp' },
+      { name = 'vsnip' }, -- For vsnip users.
+    }, {
+      { name = 'buffer' },
+    })
+  })
 
-" Airline
-let g:airline_theme= 'serene'
+  -- Use buffer source for `/` (if you enabled `native_menu`, this won't work anymore).
+  cmp.setup.cmdline('/', {
+    sources = {
+      { name = 'buffer' }
+    }
+  })
 
-" Jedi
-let g:jedi#smart_auto_mappings = 0  " turn off completion of from ... import
+  -- Use cmdline & path source for ':' (if you enabled `native_menu`, this won't work anymore).
+  cmp.setup.cmdline(':', {
+    sources = cmp.config.sources({
+      { name = 'path' }
+    }, {
+      { name = 'cmdline' }
+    })
+  })
 
-" Ack
-if executable('ag')
-  let g:ackprg = 'ag --vimgrep'
-endif
-nnoremap <leader>a :Ack <cword><cr>
+  -- Setup lspconfig.
+  local capabilities = require('cmp_nvim_lsp').update_capabilities(vim.lsp.protocol.make_client_capabilities())
+  -- Replace <YOUR_LSP_SERVER> with each lsp server you've enabled.
+  require('lspconfig')['pyright'].setup {
+    capabilities = capabilities
+  }
+  require('lspconfig')['tsserver'].setup {
+    capabilities = capabilities
+  }
+EOF
+
 
 " Goyo
 nnoremap <leader>g :Goyo<cr>
@@ -189,96 +240,14 @@ let g:goyo_margin_bottom=1
 let g:limelight_conceal_ctermfg='darkgrey'
 nnoremap <leader>l :Limelight!!<cr>
 
-" Vimwiki
-"let g:vimwiki_list = [{'path': '~/Documents/lifesum/notes/', 'syntax': 'markdown', 'ext': '.md', 'index': 'Home'}]
+" ,t to open any file
+nnoremap <leader>t :Files<cr>
+" ,f to switch to a file that's already open
+nnoremap <leader>f :Buffers<cr>
 
-set hidden
+" never include these filetypes in the list
+set wildignore+=*.o,*.6,.git,.hg,.svn,*.a,*.so,*.out,*.bbl,*.swp,*.toc,_obj,_test,*-env,*.pyc,*.pyo,*.png,*.jpg,blueprint,*.os,*.gif,*.tar,*.tar.gz,*.tar.bz2,build,dist,*.egg-info,bin,*.class,*.jar,env,lib,__pycache__,tags,elm-stuff,node_modules,plugged,*.mp4,vendor,*.feather,*.ipynb
 
-" Quit with :q even in Goyo mode
-function! s:goyo_enter()
-  let b:quitting = 0
-  let b:quitting_bang = 0
-  autocmd! QuitPre <buffer> let b:quitting = 1
-  cabbrev <buffer> q! let b:quitting_bang = 1 <bar> q!
-  "autocmd BufWinLeave <buffer> :Goyo
-endfunction
-
-function! s:goyo_leave()
-  " Quit Vim if this is the only remaining buffer
-  if b:quitting && len(filter(range(1, bufnr('$')), 'buflisted(v:val)')) == 1
-    if b:quitting_bang
-      qa!
-    else
-      qa
-    endif
-  endif
-endfunction
-
-autocmd! User GoyoEnter call <SID>goyo_enter()
-autocmd! User GoyoLeave call <SID>goyo_leave()
-
-" Automatically reformat Python files on write :D
-autocmd BufWritePre *.py execute ':Black'
-autocmd BufWritePre *.pyi execute ':Black'
-
-" Autoformat js on write
-autocmd BufWritePre *.js execute ':Prettier'
-
-" Eslint
-let g:ale_fixers = {
-            \ 'javascript': ['eslint'],
-            \ 'python': ['black']
-            \ }
-"let g:ale_sign_error = '❌'
-"let g:ale_sign_warning = '⚠️'
-let g:ale_fix_on_save = 1
-
-" yank entire file to clipboard
-nnoremap <leader>y ggyG
-
-" Snipmate: disable deprecation message
-let g:snipMate = { 'snippet_version' : 1 }
-
-" Pollen filetype detection
-augroup configgroup
-    autocmd!
-
-    "Set Pollen syntax for files with these extensions:
-    au! BufRead,BufNewFile *.pm set filetype=pollen
-    au! BufRead,BufNewFile *.pmd set filetype=pollen
-    au! BufRead,BufNewFile *.pp set filetype=pollen
-    au! BufRead,BufNewFile *.ptree set filetype=pollen
-    au! BufRead,BufNewFile *.rkt set filetype=racket
-
-    " Suggested editor settings:
-    autocmd FileType pollen setlocal wrap      " Soft wrap (don't affect buffer)
-    autocmd FileType pollen setlocal linebreak " Wrap on word-breaks only
-augroup END
-
-"
-"  automatically enter Goyo for markdown or vimwiki
-"
-function! s:auto_goyo()
-  if &ft == 'markdown' || &ft == 'vimwiki'
-    Goyo 80
-  else
-    let bufnr = bufnr('%')
-    Goyo!
-    execute 'b '.bufnr
-  endif
-endfunction
-
-augroup goyo_markdown
-  autocmd!
-  autocmd BufNewFile,BufRead * call s:auto_goyo()
-  autocmd BufEnter * call s:auto_goyo()
-augroup END
-
-"
-" faster viewport scrolling
-"
-nnoremap <c-e> 5<c-e>
-nnoremap <c-y> 5<c-y>
 
 "
 " OVERRIDE WITH LOCAL SETTINGS

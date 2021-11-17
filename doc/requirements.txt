@@ -1,4 +1,0 @@
-python-language-server[all]
-pyls-mypy
-pyls-black
-pyls-isort
