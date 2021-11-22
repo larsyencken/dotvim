@@ -12,3 +12,5 @@ let g:goyo_margin_bottom=1
 nnoremap <buffer> <leader>h :%! ~/.config/nvim/scripts/gen-heading "%:t"<cr>
 
 nnoremap <buffer> <leader>, :VimwikiToggleListItem<cr>
+
+Copilot disable
