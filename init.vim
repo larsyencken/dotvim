@@ -79,7 +79,7 @@ nnoremap <C-k> <C-w>k
 nnoremap <C-l> <C-w>l
 
 " Strip trailing whitespace on save
-autocmd BufWritePre * :%s/\s\+$//e
+autocmd BufWritePre Makefile\@<! :%s/\s\+$//e
 
 " Navigate quickly up and down the quickfix list
 nnoremap <C-m> :cn<cr>
