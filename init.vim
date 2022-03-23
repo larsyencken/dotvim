@@ -248,6 +248,22 @@ nnoremap <leader>f :Buffers<cr>
 " never include these filetypes in the list
 set wildignore+=*.o,*.6,.git,.hg,.svn,*.a,*.so,*.out,*.bbl,*.swp,*.toc,_obj,_test,*-env,*.pyc,*.pyo,*.png,*.jpg,blueprint,*.os,*.gif,*.tar,*.tar.gz,*.tar.bz2,build,dist,*.egg-info,bin,*.class,*.jar,env,lib,__pycache__,tags,elm-stuff,node_modules,plugged,*.mp4,vendor,*.feather,*.ipynb
 
+"
+"  Copilot
+"
+"  Disable copilot by default, to avoid leaking sensitive data.
+"
+let g:copilot_filetypes = {
+    \ '*': v:false,
+    \ 'python': v:true,
+    \ 'vim': v:true,
+    \ 'yaml': v:true,
+    \ 'typescript': v:true,
+    \ 'javascript': v:true,
+    \ 'html': v:true,
+    \ 'css': v:true,
+    \ }
+
 
 "
 " OVERRIDE WITH LOCAL SETTINGS
