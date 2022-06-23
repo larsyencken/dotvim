@@ -231,8 +231,7 @@ EOF
 
 
 " Goyo
-nnoremap <leader>g :Goyo<cr>
-let g:goyo_width=120
+nnoremap <leader>g :Goyo 45<cr>
 let g:goyo_margin_top=1
 let g:goyo_margin_bottom=1
 
