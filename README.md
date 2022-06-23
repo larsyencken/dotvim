@@ -2,6 +2,12 @@
 
 My personal neovim setup.
 
+## Requirements
+
+Neovim 0.7.0 or greater
+
+## Initial setup
+
 ```console
 cd ~/.config
 git clone -b nvim https://github.com/larsyencken/dotvim nvim
@@ -9,51 +15,18 @@ git clone -b nvim https://github.com/larsyencken/dotvim nvim
 
 Then open neovim and run `:PlugInstall` to install plugins.
 
-## Linting requirements
+## Language server plugins
 
 ### Python
 
-Set the python version to use, e.g. in `init-local.vim`:
+This setup uses `pyright` as the language server, which requires a functioning node installation to run:
 
 ```
-let g:python_host_prog = '/Users/lars/.pyenv/versions/neovim2/bin/python'
-let g:python3_host_prog = '/Users/lars/.pyenv/versions/neovim3/bin/python'
+npm install --location=global pyright
 ```
 
-Install packages you need there: `pip install black flake8 pyls`
-
-Also set up the language server:
+### Javascript/javascript-typescript-langserver
 
 ```
-let g:LanguageClient_serverCommands = {
-    \ 'python': ['/Users/lars/.pyenv/versions/neovim3/bin/pyls'],
-    \ }
-```
-
-### JSON
-
-```
-brew install node
-npm install -g jsonlint
-```
-
-## Javascript
-
-```
-npm i javascript-typescript-langserver -g
-```
-
-## Sierra workarounds
-
-```
-brew install reattach-to-user-namespace
-```
-
-Then in `.zshrc-local`:
-
-```
-alias nvim='reattach-to-user-namespace -l nvim'
-alias vim='reattach-to-user-namespace -l nvim'
-alias vi='reattach-to-user-namespace -l nvim'
-export EDITOR='/usr/local/bin/reattach-to-user-namespace -l nvim'
+npm install --location=global typescript
 ```
