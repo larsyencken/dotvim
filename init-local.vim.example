@@ -1,0 +1,10 @@
+"
+"  init-local.vim
+"
+
+let g:vimwiki_list = [{'path': '~/Documents/owid/dropbox/journal/', 'syntax': 'markdown', 'ext': '.md', 'index': 'Home'}, {'path': '~/Documents/personal/life-journal/', 'syntax': 'markdown', 'ext': '.md', 'index': 'Home'}]
+
+set wildignore+=*itsJustJavascript/*
+
+let g:copilot_node_command = "~/.nvm/versions/node/v16.13.2/bin/node"
+
