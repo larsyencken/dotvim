@@ -41,6 +41,9 @@ Plug 'larsyencken/vimwiki'
 " python formatting
 Plug 'python/black'
 
+" LS support for vale in markdown
+"Plug 'jose-elias-alvarez/null-ls.nvim'
+
 call plug#end()
 
 
@@ -167,6 +170,15 @@ for _, lsp in ipairs(servers) do
   }
 end
 EOF
+
+" language server for vale
+"lua << EOF
+"require("null-ls").setup({
+"    sources = {
+"        require("null-ls").builtins.diagnostics.vale,
+"    },
+"})
+"EOF
 
 "
 " CUSTOMIZE PLUGINS
