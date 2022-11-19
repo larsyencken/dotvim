@@ -36,7 +36,7 @@ def gen_header(filename: str) -> str:
     elif f.is_year():
         return _gen_year_header(f.year)
 
-    return _gen_generic_header(f.normed_base)
+    return _gen_generic_header(f.base.title())
 
 
 class NotMarkdownFile(Exception):
@@ -60,10 +60,10 @@ class WikiFile:
         return True
 
     def is_week_prefixed(self) -> bool:
-        return bool(re.match("^20[0-9]{2}-W[0-9]{1,2}", self.base))
+        return bool(re.match("^20[0-9]{2} W[0-9]{1,2}", self.base))
 
     def is_quarter_prefixed(self) -> bool:
-        return bool(re.match("^20[0-9]{2}-Q[1-4]", self.base))
+        return bool(re.match("^20[0-9]{2} Q[1-4]", self.base))
 
     def is_year(self) -> bool:
         return bool(re.match("^(19|20)[0-9]{2}$", self.base))
@@ -71,10 +71,6 @@ class WikiFile:
     @property
     def week(self) -> Week:
         return Week.from_string(self.base)
-
-    @property
-    def normed_base(self) -> str:
-        return _norm_name(self.base)
 
     @property
     def quarter(self) -> Quarter:

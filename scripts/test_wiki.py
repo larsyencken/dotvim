@@ -41,7 +41,7 @@ def test_year_header():
 
 
 def test_week_prefixed_file():
-    filename = "a/b/2020-W12.md"
+    filename = "a/b/2020 W12.md"
     f = wiki.WikiFile(filename)
 
     assert not f.is_date_prefixed()
@@ -52,7 +52,7 @@ def test_week_prefixed_file():
 
 
 def test_quarter_prefixed_file():
-    filename = "a/b/2020-Q4.md"
+    filename = "a/b/2020 Q4.md"
     f = wiki.WikiFile(filename)
 
     assert not f.is_date_prefixed()
@@ -77,7 +77,7 @@ def test_gen_today_header_from_filename():
 
 
 def test_gen_week_header_from_filename():
-    filename = "a/b/2020-W19.md"
+    filename = "a/b/2020 W19.md"
     header = wiki.gen_header(filename)
     expected = (
         "# 2020 W19\n\n"
@@ -97,7 +97,7 @@ def test_gen_week_header_from_filename():
 def test_generic_header_malformed():
     filename = "a/b/2020-04-Sheep like that.md"
     header = wiki.gen_header(filename)
-    expected = "# 2020 04 Sheep Like That\n\n[[Home]]\n"
+    expected = "# 2020-04-Sheep Like That\n\n[[Home]]\n"
     assert header == expected
 
 
@@ -115,7 +115,7 @@ def test_non_markdown_file():
 
 
 def test_gen_quarter_header_from_filename():
-    filename = "a/b/2020-Q1.md"
+    filename = "a/b/2020 Q1.md"
     header = wiki.gen_header(filename)
     expected = (
         "# 2020 Q1\n\n"
