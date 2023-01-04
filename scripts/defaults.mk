@@ -23,7 +23,7 @@ lint-default: .venv
 
 mypy-default: .venv
 	@echo -n "==> Type checking..."
-	@.venv/bin/mypy --no-error-summary $(CODE_LOCATIONS)
+	@.venv/bin/pyright $(CODE_LOCATIONS)
 	@echo -e "$(OK_MSG)"
 
 unittest-default: .venv

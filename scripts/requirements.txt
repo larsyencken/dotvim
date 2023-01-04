@@ -6,8 +6,8 @@ flake8
 blessed
 sh
 isoweek
-mypy
 arrow
 coverage
 pytest-cov
 python-dateutil
+pyright
