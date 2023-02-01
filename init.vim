@@ -44,6 +44,8 @@ Plug 'python/black'
 " LS support for vale in markdown
 "Plug 'jose-elias-alvarez/null-ls.nvim'
 
+Plug 'nvim-treesitter/nvim-treesitter', {'do': ':TSUpdate'}
+
 call plug#end()
 
 
@@ -268,12 +270,17 @@ let g:copilot_filetypes = {
     \ '*': v:false,
     \ 'python': v:true,
     \ 'vim': v:true,
+    \ 'vimwiki': v:true,
+    \ 'markdown': v:true,
     \ 'yaml': v:true,
     \ 'typescript': v:true,
     \ 'javascript': v:true,
     \ 'html': v:true,
     \ 'css': v:true,
+    \ 'go': v:true,
     \ }
+
+autocmd BufEnter,BufRead **/*-journal/*.md Copilot disable
 
 
 "
