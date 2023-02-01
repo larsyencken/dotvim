@@ -13,4 +13,7 @@ nnoremap <buffer> <leader>h :%! ~/.config/nvim/scripts/gen-heading "%:t"<cr>
 
 nnoremap <buffer> <leader>, :VimwikiToggleListItem<cr>
 
-Copilot disable
+autocmd BufEnter,BufRead *journal*.md Copilot disable
+
+" fix copilot autocompletion conflicting with table plugin for vimwiki
+iunmap <buffer> <tab>
