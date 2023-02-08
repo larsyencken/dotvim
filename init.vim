@@ -40,6 +40,7 @@ Plug 'vimwiki/vimwiki'
 
 " python formatting
 Plug 'python/black'
+Plug 'brentyi/isort.vim'
 
 " LS support for vale in markdown
 "Plug 'jose-elias-alvarez/null-ls.nvim'
@@ -260,6 +261,12 @@ nnoremap <leader>f :Buffers<cr>
 
 " never include these filetypes in the list
 set wildignore+=*.o,*.6,.git,.hg,.svn,*.a,*.so,*.out,*.bbl,*.swp,*.toc,_obj,_test,*-env,*.pyc,*.pyo,*.png,*.jpg,blueprint,*.os,*.gif,*.tar,*.tar.gz,*.tar.bz2,build,dist,*.egg-info,bin,*.class,*.jar,env,lib,__pycache__,tags,elm-stuff,node_modules,plugged,*.mp4,vendor,*.feather,*.ipynb
+
+"
+"  isort
+"  https://github.com/brentyi/isort.vim
+"
+let g:isort_vim_options = '--profile black'
 
 "
 "  Copilot
