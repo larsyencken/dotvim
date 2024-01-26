@@ -18,6 +18,36 @@ require("lazy").setup({
     -- import/override with your plugins
     { import = "lazyvim.plugins.extras.coding.copilot" },
     { import = "plugins" },
+    {
+      "neovim/nvim-lspconfig",
+      opts = {
+        servers = {
+          pyright = {},
+          ruff_lsp = {},
+        },
+      },
+      setup = {
+        ruff_lsp = function()
+          require("lazyvim.util").on_attach(function(client, _)
+            if client.name == "ruff_lsp" then
+              -- Disable hover in favor of Pyright
+              client.server_capabilities.hoverProvider = false
+            end
+          end)
+        end,
+      },
+    },
+    {
+      "unisonweb/unison",
+      branch = "trunk",
+      config = function(plugin)
+        vim.opt.rtp:append(plugin.dir .. "/editor-support/vim")
+        require("lazy.core.loader").packadd(plugin.dir .. "/editor-support/vim")
+      end,
+      init = function(plugin)
+        require("lazy.core.loader").ftdetect(plugin.dir .. "/editor-support/vim")
+      end,
+    },
   },
   defaults = {
     -- By default, only LazyVim plugins will be lazy-loaded. Your custom plugins will load during startup.
